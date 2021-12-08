@@ -20,23 +20,32 @@ include with your application.
 The `assets/images` directory contains [resolution-aware
 images](https://flutter.dev/docs/development/ui/assets-and-images#resolution-aware).
 
+### Native splash screen
+
+Splash screen configuration with available options is available in `flutter_native_splash.yaml`.
+Any changes to this file have to be followed by running `flutter pub run flutter_native_splash:create` command.
+
+> This is a solution for masking the initial load time of Flutter engine. If the app does
+> something time consuming before displaying meaningful content to the user consider
+> adding a splash screen widget to mask such wait time.
+
 ## Localization
 
 We're using `flutter_localizations` package which generates code automatically based on `lib/src/localization/*.arb` language files.
 
-## Supporting new languages
+### Supporting new languages
 
 To add another language to the app:
 
 1. add a `app_xx.arb` where _xx_ is a two letter language code (eg. pl for Polish, es for Spanish). It must contain translated strings for all keys from `app_en.arb` (except ones with a `@` prefix, those are for added context for the translator),
 2. add new supported Locale to `supportedLocales` list in `lib/app.dart` (eg. Locale('pl', '') for Polish, Locale('es', '') for Spanish).
 
-## Using defined strings
+### Using defined strings
 
 After code generation all of the defined strings will be available for widgets from `AppLocalizations.of(context)`.
 Eg. to read an `appTitle` field in the Text widget: `Text(AppLocalizations.of(context)!.appTitle)`.
 
-### Testing with `AppLocalizations`
+#### Testing with `AppLocalizations`
 
 If a widget to test uses `AppLocalizations`, you will have to wrap it with `MaterialApp` and provide `localizationsDelegates: AppLocalizations.delegate` like so:
 
