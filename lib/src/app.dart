@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:template/src/environment/variables.dart';
 
 /// The Widget that configures your application.
@@ -55,6 +56,17 @@ class MyApp extends StatelessWidget {
 class TheScreenWidget extends StatelessWidget {
   const TheScreenWidget({Key? key}) : super(key: key);
 
+  Future<void> _reportError() async {
+    try {
+      throw Exception('test exception');
+    } catch (e, stackTrace) {
+      await Sentry.captureException(
+        e,
+        stackTrace: stackTrace,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) => Scaffold(
         body: Center(
@@ -67,6 +79,11 @@ class TheScreenWidget extends StatelessWidget {
               const Text(
                 '${EnvironmentVariables.appName} ${EnvironmentVariables.appSuffix}',
               ),
+              TextButton.icon(
+                onPressed: _reportError,
+                label: const Text('Report an error to Sentry'),
+                icon: const Icon(Icons.error),
+              )
             ],
           ),
         ),

@@ -1,2 +1,1 @@
-APP_NAME=Dev app
-APP_SUFFIX=.dev
+APP_NAME=Prod app

@@ -13,7 +13,7 @@ Supports:
 - [ ] Testing
 - [ ] CI/CD with AppCenter
 - [ ] Setup for VS Code
-- [ ] Sentry integration
+- [x] Sentry integration
 - [ ] ADR
 - [ ] Changelog
 - [ ] Caching, saving local data
@@ -144,3 +144,13 @@ def dartEnvironmentVariables = [
 ```
 
 4. (Optional) Handle the value in iOS build process. New variables will be automatically available for use in Xcode (as long as those are prefixed with `APP_`).
+
+### Adding environments
+
+You can create new environments, like staging just by defining new a set of environment variables in `.vscode/launch.json` or when running a `flutter run/build` commands.
+
+> Remember to apply new environment name to `SENTRY_ENVIRONMENT`.
+
+## 📈 Sentry
+
+After creating Sentry project just pass the DSN to `--dart-define=SENTRY_DSN=value` in `.vscode/launch.json` or when running a `flutter run/build` commands.
