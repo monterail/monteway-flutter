@@ -4,19 +4,19 @@ Flutter app template.
 
 Supports:
 
-[x] Internationalization
-[x] Splash screen
-[x] Linting and formatting
-[ ] State management with bloc
-[ ] Flavors
-[ ] Routing
-[ ] Testing
-[ ] CI/CD with AppCenter
-[ ] Setup for VS Code
-[ ] Sentry integration
-[ ] ADR
-[ ] Changelog
-[ ] Caching, saving local data
+- [x] Internationalization
+- [x] Splash screen
+- [x] Linting and formatting
+- [ ] State management with bloc
+- [ ] Flavors
+- [ ] Routing
+- [ ] Testing
+- [ ] CI/CD with AppCenter
+- [ ] Setup for VS Code
+- [ ] Sentry integration
+- [ ] ADR
+- [ ] Changelog
+- [ ] Caching, saving local data
 
 ## 👋 Getting Started
 
