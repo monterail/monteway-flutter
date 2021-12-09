@@ -1,8 +1,24 @@
-# template
+# Monterail Flutter app template
 
-A new Flutter project.
+Flutter app template.
 
-## Getting Started
+Supports:
+
+[x] Internationalization
+[x] Splash screen
+[x] Linting and formatting
+[ ] State management with bloc
+[ ] Flavors
+[ ] Routing
+[ ] Testing
+[ ] CI/CD with AppCenter
+[ ] Setup for VS Code
+[ ] Sentry integration
+[ ] ADR
+[ ] Changelog
+[ ] Caching, saving local data
+
+## 👋 Getting Started
 
 This project is a starting point for a Flutter application that follows the
 [simple app state management
@@ -12,7 +28,7 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-## Assets
+## 📦 Assets
 
 The `assets` directory houses images, fonts, and any other files you want to
 include with your application.
@@ -29,7 +45,7 @@ Any changes to this file have to be followed by running `flutter pub run flutter
 > something time consuming before displaying meaningful content to the user consider
 > adding a splash screen widget to mask such wait time.
 
-## Localization
+## 🌍 Localization
 
 We're using `flutter_localizations` package which generates code automatically based on `lib/src/localization/*.arb` language files.
 
@@ -60,7 +76,7 @@ const myWidget = MaterialApp(
 
 - Flutter docs: [link](https://docs.flutter.dev/development/accessibility-and-localization/internationalization)
 
-## Code style
+## 💅 Code style
 
 It's good to keep consistent code style, at least project-wide, and Dart/Flutter does come with linting support.
 
