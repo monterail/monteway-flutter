@@ -1,0 +1,44 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Dev app",
+      "request": "launch",
+      "type": "dart",
+      "args": [
+        "--dart-define=APP_NAME=Dev app",
+        "--dart-define=APP_SUFFIX=.dev"
+      ]
+    },
+    {
+      "name": "Dev app (profile mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile",
+      "args": [
+        "--dart-define=APP_NAME=Dev app",
+        "--dart-define=APP_SUFFIX=.dev"
+      ]
+    },
+    {
+      "name": "Prod app",
+      "request": "launch",
+      "type": "dart",
+      "args": [
+        "--dart-define=APP_NAME=Prod app"
+      ]
+    },
+    {
+      "name": "Prod app (profile mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile",
+      "args": [
+        "--dart-define=APP_NAME=Prod app"
+      ]
+    },
+  ]
+}
