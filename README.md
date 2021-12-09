@@ -15,7 +15,7 @@ Supports:
 - [ ] Setup for VS Code
 - [x] Sentry integration
 - [ ] ADR
-- [ ] Changelog
+- [x] Changelog
 - [ ] Caching, saving local data
 
 ## 👋 Getting Started
@@ -154,3 +154,7 @@ You can create new environments, like staging just by defining new a set of envi
 ## 📈 Sentry
 
 After creating Sentry project just pass the DSN to `--dart-define=SENTRY_DSN=value` in `.vscode/launch.json` or when running a `flutter run/build` commands.
+
+## 📆 Changelog
+
+Each app version should have brief notes for introduced changes in `CHANGELOG.md`.
