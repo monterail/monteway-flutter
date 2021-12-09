@@ -79,7 +79,7 @@ To format the code use `flutter format lib/` or `flutter format test/` command i
 Linting can be easily integrated via [Flutter](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter) extension.
 
 With this extension, you can find analysis issues in the **Problems** tab:
- ![vs code linting](https://trello.com/1/cards/61b0844bf5dc81690e9a4ea3/attachments/61b1a114d4df848f628380f7/download/image.png)
+ ![VS Code linting](https://user-images.githubusercontent.com/15102395/145346960-faba586f-a99e-4e5c-85c2-e6e3117fc163.png)
 
 > To see issues next to affected line use [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens) extension.
 
@@ -87,4 +87,5 @@ With this extension, you can find analysis issues in the **Problems** tab:
 
 Enable automatic code formatting on each file save by settings `Manage (Bottom left cog icon) ➡ Settings`, then search for _Editor: Format On Save_ and enable the checkbox:
 
-![vs code formatting](https://trello.com/1/cards/61b0844bf5dc81690e9a4ea3/attachments/61b1a39c9cf9c21fffcc1c7c/download/image.png)
+![VS Code formatting](https://user-images.githubusercontent.com/15102395/145347010-71f4e765-2247-424a-a712-56d3d5fe37f8.png)
+
