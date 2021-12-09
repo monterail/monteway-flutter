@@ -38,7 +38,7 @@ We're using `flutter_localizations` package which generates code automatically b
 To add another language to the app:
 
 1. add a `app_xx.arb` where _xx_ is a two letter language code (eg. pl for Polish, es for Spanish). It must contain translated strings for all keys from `app_en.arb` (except ones with a `@` prefix, those are for added context for the translator),
-2. add new supported Locale to `supportedLocales` list in `lib/app.dart` (eg. Locale('pl', '') for Polish, Locale('es', '') for Spanish).
+2. add new supported Locale to `supportedLocales` list in `lib/app.dart` (eg. `Locale('pl', '')` for Polish, `Locale('es', '')` for Spanish).
 
 ### Using defined strings
 
@@ -58,4 +58,33 @@ const myWidget = MaterialApp(
 );
 ```
 
-- Flutter docs: https://docs.flutter.dev/development/accessibility-and-localization/internationalization
+- Flutter docs: [link](https://docs.flutter.dev/development/accessibility-and-localization/internationalization)
+
+## Code style
+
+It's good to keep consistent code style, at least project-wide, and Dart/Flutter does come with linting support.
+
+### Linting
+
+We're using `flutter_lints` package which contains recommended rules for Flutter apps.
+
+Run linting by running `flutter analyze` command in the root of the project or integrate linter with your IDE.
+
+### Formatting
+
+To format the code use `flutter format lib/` or `flutter format test/` command in the root of a project.
+
+#### Usage with VS Code
+
+Linting can be easily integrated via [Flutter](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter) extension.
+
+With this extension, you can find analysis issues in the **Problems** tab:
+ ![vs code linting](https://trello.com/1/cards/61b0844bf5dc81690e9a4ea3/attachments/61b1a114d4df848f628380f7/download/image.png)
+
+> To see issues next to affected line use [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens) extension.
+
+##### Auto-formatting on file save
+
+Enable automatic code formatting on each file save by settings `Manage (Bottom left cog icon) ➡ Settings`, then search for _Editor: Format On Save_ and enable the checkbox:
+
+![vs code formatting](https://trello.com/1/cards/61b0844bf5dc81690e9a4ea3/attachments/61b1a39c9cf9c21fffcc1c7c/download/image.png)
