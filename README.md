@@ -1,4 +1,4 @@
-# Monterail Flutter app template
+# 🚀 Monterail Flutter app template 🚀
 
 Flutter app template.
 
