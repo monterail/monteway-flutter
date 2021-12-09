@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:template/src/environment/variables.dart';
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
@@ -57,7 +58,17 @@ class TheScreenWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         body: Center(
-          child: Text(AppLocalizations.of(context)!.appTitle),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                AppLocalizations.of(context)!.appTitle,
+              ),
+              const Text(
+                '${EnvironmentVariables.appName} ${EnvironmentVariables.appSuffix}',
+              ),
+            ],
+          ),
         ),
       );
 }
