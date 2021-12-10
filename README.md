@@ -12,7 +12,7 @@ Supports:
 - [ ] Routing
 - [ ] Testing
 - [ ] CI/CD with AppCenter
-- [ ] Setup for VS Code
+- [x] Setup for VS Code
 - [x] Sentry integration
 - [ ] ADR
 - [x] Changelog
