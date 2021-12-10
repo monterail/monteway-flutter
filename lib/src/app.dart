@@ -94,7 +94,7 @@ class TheScreenWidget extends StatelessWidget {
                     onPressed: () => Routemaster.of(context).push(
                       Routes.blocView('BLoC'),
                     ),
-                    child: const Text('to BLoC screen'),
+                    child: const Text('To BLoC screen'),
                   ),
                 ],
               ),
