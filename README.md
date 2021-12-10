@@ -147,14 +147,29 @@ def dartEnvironmentVariables = [
 
 ### Adding environments
 
-You can create new environments, like staging just by defining new a set of environment variables in `.vscode/launch.json` or when running a `flutter run/build` commands.
+To create new environment:
 
-> Remember to apply new environment name to `SENTRY_ENVIRONMENT`.
+1. Create new file with variables in `environment/` directory.
+2. Include new variables file in `Makefile`.
+3. Create build scripts for the new flavor.
+
+Also, for VS Code:
+
+1. Open `.vscode/launch.json`.
+2. Create _debug_ and _profile_ launch modes with new environment variables.
 
 ## 📈 Sentry
 
 After creating Sentry project just pass the DSN to `--dart-define=SENTRY_DSN=value` in `.vscode/launch.json` or when running a `flutter run/build` commands.
 
+[Sentry docs](https://docs.sentry.io/platforms/flutter/)
+
 ## 📆 Changelog
 
 Each app version should have brief notes for introduced changes in `CHANGELOG.md`.
+
+## 🏭 Building the app
+
+There is a `Makefile` with build scripts for _dev_ and _prod_ environment (those are standard `flutter build *` commands but with environment variables).
+
+Eg. to build _dev_ `.apk` run `make build-dev-apk`. For iOS there're `*-ipa`, and for web there're `*-web` scripts.
