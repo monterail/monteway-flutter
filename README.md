@@ -7,7 +7,7 @@ Supports:
 - [x] Internationalization
 - [x] Splash screen
 - [x] Linting and formatting
-- [ ] State management with bloc
+- [x] State management with bloc
 - [x] Flavors
 - [x] Routing
 - [ ] Testing
@@ -104,6 +104,31 @@ With this extension, you can find analysis issues in the **Problems** tab:
 Enable automatic code formatting on each file save by settings `Manage (Bottom left cog icon) ➡ Settings`, then search for _Editor: Format On Save_ and enable the checkbox:
 
 ![VS Code formatting](https://user-images.githubusercontent.com/15102395/145347010-71f4e765-2247-424a-a712-56d3d5fe37f8.png)
+
+## 🚄 BLoC state management
+
+We're using bloc (mostly) as out state management. It provides us easy separation of our apps into three layers:
+1. Presentation (your UI has to be located here)
+2. Business logic (here is place for code that do some stuff)
+3. Data (work with network or local data will be located here)
+
+### BLoC or Cubit?
+
+We use both Cubit and classic BLoC.
+
+BLoC is your choice if you are building a feature that has inputs, a lot of fetches, or any other kind of complicated states
+
+If you are working on some simpler stuff, take a Cubit. You can easily rewrite it later.
+
+### Useful tips
+
+* Install [this](https://marketplace.visualstudio.com/items?itemName=FelixAngelov.bloc) VSCode extension to save your time while you're creating your blocs
+* Separate your models, API fetches, UI screens, and blocs/cubits by features
+* Write tests for each of your bloc/cubit
+* Your states and events have to extend [Equatable](https://pub.dev/packages/equatable), the reason is described [here](https://stackoverflow.com/a/67827047) (if you're lazy) and [here](https://medium.com/flutterworld/flutter-equatable-its-use-inside-bloc-7d14f3b5479b) (if you're not so lazy)
+* Put only one [BlocProvider](https://pub.dev/documentation/flutter_bloc/latest/flutter_bloc/BlocProvider-class.html) in the tree, then just use [BlocBuilder](https://pub.dev/documentation/flutter_bloc/latest/flutter_bloc/BlocBuilder-class.html) to have access to your bloc or cubit
+* If your bloc contains some work with streams, don't forget to close it in [close()](https://pub.dev/documentation/bloc/latest/bloc/Bloc/close.html) method of your bloc
+* **Do** use [MultiBlocProvider](https://pub.dev/documentation/flutter_bloc/latest/flutter_bloc/MultiBlocProvider-class.html) in case you need to provide more than one bloc to your module
 
 ## ⚙️ Environment variables (flavors)
 
