@@ -14,7 +14,7 @@ Supports:
 - [x] CI/CD with AppCenter
 - [x] Setup for VS Code
 - [x] Sentry integration
-- [ ] ADR
+- [x] ADR
 - [x] Changelog
 - [ ] Caching, saving local data
 
