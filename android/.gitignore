@@ -1,13 +1,9 @@
-gradle-wrapper.jar
+# Commented some files out to make AppCenter able
+# to detect the Android app
+# gradle-wrapper.jar
+# /gradlew
+# /gradlew.bat
 /.gradle
 /captures/
-/gradlew
-/gradlew.bat
 /local.properties
 GeneratedPluginRegistrant.java
-
-# Remember to never publicly share your keystore.
-# See https://flutter.dev/docs/deployment/android#reference-the-keystore-from-the-app
-key.properties
-**/*.keystore
-**/*.jks
