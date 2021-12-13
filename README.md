@@ -265,4 +265,9 @@ To use signing in Android builds, set the AppCenter build like so:
 
 ### iOS setup
 
+iOS builds will require `.mobileprovision` and `.p12` files. [Here's](https://docs.microsoft.com/en-us/appcenter/build/ios/code-signing) how to obtain them. Keep them somewhere safe and upload copies to AppCenter build config:
+
+#### AppCenter iOS setup
+
+To use signing in iOS builds, set the AppCenter build like so:
 TODO
