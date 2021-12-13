@@ -44,7 +44,6 @@ build-dev-web:
 prod:
 	flutter $(FLUTTER_METHOD) $(BUILD_TARGET) \
 		--dart-define=APP_NAME="${APP_NAME_PROD}" \
-		--dart-define=APP_SUFFIX=${APP_SUFFIX_PROD} \
 		--dart-define=SENTRY_DSN=${SENTRY_DSN_PROD} \
 		--dart-define=SENTRY_ENVIRONMENT=${SENTRY_ENVIRONMENT_PROD} \
 		$(OPTIONS)
