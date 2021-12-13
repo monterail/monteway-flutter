@@ -80,6 +80,12 @@ android {
             signingConfig signingConfigs.release
         }
     }
+
+    // This is likely needed, see https://github.com/flutter/flutter/issues/58247
+    lintOptions {
+        disable 'InvalidPackage'
+        checkReleaseBuilds false
+    }
 }
 
 flutter {
