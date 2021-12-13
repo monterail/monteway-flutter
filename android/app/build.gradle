@@ -61,17 +61,17 @@ android {
         applicationIdSuffix dartEnvironmentVariables.APP_SUFFIX
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode flutterVersionCode.toInteger()
+        versionCode System.getenv('APPCENTER_BUILD_ID').toInteger() ?: flutterVersionCode.toInteger()
         versionName flutterVersionName
         resValue "string", "app_name", dartEnvironmentVariables.APP_NAME
     }
 
     signingConfigs {
         release {
-            storeFile file("../upload-keystore.jks")
-            storePassword "testtest"
-            keyAlias "upload"
-            keyPassword "testtest"
+            storeFile rootProject.file("app/android.keystore") ?: rootProject.file("upload-keystore.jks")
+            storePassword System.getenv("APPCENTER_KEYSTORE_PASSWORD") ?: "testtest"
+            keyAlias System.getenv("APPCENTER_KEY_ALIAS") ?: "upload"
+            keyPassword System.getenv("APPCENTER_KEY_PASSWORD") ?: "testtest"
         }
     }
 
