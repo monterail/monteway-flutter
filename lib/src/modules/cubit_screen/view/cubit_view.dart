@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:template/src/modules/cubit_screen/cubit/counter_cubit.dart';
 
-// TODO: Add cubit example
 class CubitView extends StatelessWidget {
   final String? title;
 
