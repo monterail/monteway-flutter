@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:template/src/config/routes.dart';
 import 'package:template/src/environment/variables.dart';
+import 'package:template/src/repositories/user_repository/src/user_repository.dart';
+
+import 'repositories/user_repository/src/models/user.dart';
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
@@ -65,41 +69,75 @@ class TheScreenWidget extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                AppLocalizations.of(context)!.appTitle,
-              ),
-              const Text(
-                '${EnvironmentVariables.appName} ${EnvironmentVariables.appSuffix}',
-              ),
-              TextButton.icon(
-                onPressed: _reportError,
-                label: const Text('Report an error to Sentry'),
-                icon: const Icon(Icons.error),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  TextButton(
-                    onPressed: () => Routemaster.of(context).push(
-                      Routes.cubitRoute(title: 'Cubit'),
-                    ),
-                    child: const Text('To cubit screen'),
+  Widget build(BuildContext context) {
+    //test
+    UserRepository?.saveUser(User(pk: 1, firstName: 'Jan', lastName: 'Nowak'));
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              AppLocalizations.of(context)!.appTitle,
+            ),
+            const Text(
+              '${EnvironmentVariables.appName} ${EnvironmentVariables.appSuffix}',
+            ),
+            TextButton.icon(
+              onPressed: _reportError,
+              label: const Text('Report an error to Sentry'),
+              icon: const Icon(Icons.error),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                TextButton(
+                  onPressed: () => Routemaster.of(context).push(
+                    Routes.cubitRoute(title: 'Cubit'),
                   ),
-                  TextButton(
-                    onPressed: () => Routemaster.of(context).push(
-                      Routes.blocRoute(title: 'BLoC'),
-                    ),
-                    child: const Text('To BLoC screen'),
+                  child: const Text('To cubit screen'),
+                ),
+                TextButton(
+                  onPressed: () => Routemaster.of(context).push(
+                    Routes.blocRoute(title: 'BLoC'),
                   ),
-                ],
-              ),
-            ],
-          ),
+                  child: const Text('To BLoC screen'),
+                ),
+              ],
+            ),
+            ValueListenableBuilder<Box>(
+              valueListenable:
+                  Hive.box(UserRepository?.userInfoBoxKey).listenable(),
+              builder: (context, box, widget) {
+                return Text(
+                    '${UserRepository?.getUser()?.firstName ?? '-'} ${UserRepository?.getUser()?.lastName ?? '-'}');
+              },
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    if (UserRepository.getUser() != null) {
+                      UserRepository?.deleteUser(UserRepository.getUser()!);
+                    }
+                  },
+                  child: const Text('Remove'),
+                ),
+                const SizedBox(width: 16),
+                ElevatedButton(
+                  onPressed: () {
+                    UserRepository?.saveUser(
+                      User(pk: 1, firstName: 'Jan', lastName: 'Nowak'),
+                    );
+                  },
+                  child: const Text('Add'),
+                ),
+              ],
+            ),
+          ],
         ),
-      );
+      ),
+    );
+  }
 }
