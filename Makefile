@@ -51,7 +51,7 @@ prod:
 
 .PHONY: run-prod
 run-prod:
-	FLUTTER_METHOD=run make prod
+	FLUTTER_METHOD=run make prod OPTIONS="--release --verbose"
 
 .PHONY: build-prod
 build-prod:
