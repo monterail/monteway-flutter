@@ -17,6 +17,7 @@ dependencies:
   sentry_flutter: ^6.2.0
   routemaster: ^0.9.5
   flutter_bloc: ^8.0.0
+  bloc_test: ^9.0.1
   equatable: ^2.0.3
 
 dev_dependencies:
