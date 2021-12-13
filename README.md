@@ -109,7 +109,7 @@ Enable automatic code formatting on each file save by settings `Manage (Bottom l
 
 We're using bloc (mostly) as out state management. It provides us easy separation of our apps into three layers:
 1. Presentation (your UI has to be located here)
-2. Business logic (here is place for code that do some staff)
+2. Business logic (here is place for code that do some stuff)
 3. Data (work with network or local data will be located here)
 
 ### BLoC or Cubit?
@@ -118,7 +118,7 @@ We use both Cubit and classic BLoC.
 
 BLoC is your choice if you are building a feature that has inputs, a lot of fetches, or any other kind of complicated states
 
-If you are working on some simpler staff, take a Cubit. You can easily rewrite it later.
+If you are working on some simpler stuff, take a Cubit. You can easily rewrite it later.
 
 ### Useful tips
 
