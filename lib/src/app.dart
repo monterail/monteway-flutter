@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:routemaster/routemaster.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:template/src/config/routes.dart';
 import 'package:template/src/environment/variables.dart';
 
 /// The Widget that configures your application.
@@ -9,7 +11,11 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => MaterialApp(
+  Widget build(BuildContext context) => MaterialApp.router(
+        routerDelegate: RoutemasterDelegate(
+          routesBuilder: (context) => Routes.routes,
+        ),
+        routeInformationParser: const RoutemasterParser(),
         // Providing a restorationScopeId allows the Navigator built by the
         // MaterialApp to restore the navigation stack when a user leaves and
         // returns to the app after it has been killed while running in the
@@ -41,15 +47,6 @@ class MyApp extends StatelessWidget {
         // preferred ThemeMode (light, dark, or system default) from the
         // SettingsController to display the correct theme.
         theme: ThemeData(),
-
-        // Define a function to handle named routes in order to support
-        // Flutter web url navigation and deep linking.
-        onGenerateRoute: (RouteSettings routeSettings) {
-          return MaterialPageRoute<void>(
-            settings: routeSettings,
-            builder: (BuildContext context) => const TheScreenWidget(),
-          );
-        },
       );
 }
 
@@ -83,7 +80,24 @@ class TheScreenWidget extends StatelessWidget {
                 onPressed: _reportError,
                 label: const Text('Report an error to Sentry'),
                 icon: const Icon(Icons.error),
-              )
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  TextButton(
+                    onPressed: () => Routemaster.of(context).push(
+                      Routes.cubitRoute(title: 'Cubit'),
+                    ),
+                    child: const Text('To cubit screen'),
+                  ),
+                  TextButton(
+                    onPressed: () => Routemaster.of(context).push(
+                      Routes.blocRoute(title: 'BLoC'),
+                    ),
+                    child: const Text('To BLoC screen'),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
