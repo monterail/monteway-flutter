@@ -9,7 +9,7 @@ Supports:
 - [x] Linting and formatting
 - [ ] State management with bloc
 - [x] Flavors
-- [ ] Routing
+- [x] Routing
 - [ ] Testing
 - [ ] CI/CD with AppCenter
 - [ ] Setup for VS Code
@@ -157,6 +157,52 @@ Also, for VS Code:
 
 1. Open `.vscode/launch.json`.
 2. Create _debug_ and _profile_ launch modes with new environment variables.
+
+## 🧭 Routing
+
+By default [Routemaster](https://pub.dev/packages/routemaster) is used as route management. it provides us opportunity to easily send params to our routes.
+
+To create some route without params:
+
+1. Define path as a static constant
+```dart
+  static const main = '/';
+```
+2. Add pair of your path and widget to routes map
+```dart
+RouteMap(
+  routes: {
+    main: (_) => const MaterialPage(child: TheScreenWidget()),
+    },
+  );
+```
+
+To create route with some parameter:
+
+1. Define path as static method that has named parameters.
+```dart
+  static String cubitRoute({String? title}) => '/cubit/${title ?? ':title'}';
+```
+2. Add pair to routes map
+```dart
+RouteMap(
+  routes: {
+    // Defined path is '/cubit/:title'
+    cubitRoute(): (info) => MaterialPage(
+      child: CubitView(
+        title: info.pathParameters['title'],
+        ),
+      ),
+    },
+  );
+```
+
+To send some parameters to the screen:
+```dart
+Routemaster.of(context).push(Routes.cubitRoute('BLoC'));
+```
+
+You also can use your route without parameters, in this case, the provided value will be `null`
 
 ## 📈 Sentry
 
