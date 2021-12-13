@@ -179,16 +179,16 @@ RouteMap(
 
 To create route with some parameter:
 
-1. Define path as static method that has positional parameters.
+1. Define path as static method that has named parameters.
 ```dart
-  static String cubitView([String? title]) => '/cubit/${title ?? ':title'}';
+  static String cubitRoute({String? title}) => '/cubit/${title ?? ':title'}';
 ```
 2. Add pair to routes map
 ```dart
 RouteMap(
   routes: {
     // Defined path is '/cubit/:title'
-    cubitView(): (info) => MaterialPage(
+    cubitRoute(): (info) => MaterialPage(
       child: CubitView(
         title: info.pathParameters['title'],
         ),
@@ -199,7 +199,7 @@ RouteMap(
 
 To send some parameters to the screen:
 ```dart
-Routemaster.of(context).push(Routes.blocView('BLoC'));
+Routemaster.of(context).push(Routes.cubitRoute('BLoC'));
 ```
 
 You also can use your route without parameters, in this case, the provided value will be `null`

@@ -86,13 +86,13 @@ class TheScreenWidget extends StatelessWidget {
                 children: [
                   TextButton(
                     onPressed: () => Routemaster.of(context).push(
-                      Routes.cubitView('Cubit'),
+                      Routes.cubitRoute(title: 'Cubit'),
                     ),
                     child: const Text('To cubit screen'),
                   ),
                   TextButton(
                     onPressed: () => Routemaster.of(context).push(
-                      Routes.blocView('BLoC'),
+                      Routes.blocRoute(title: 'BLoC'),
                     ),
                     child: const Text('To BLoC screen'),
                   ),

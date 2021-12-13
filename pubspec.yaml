@@ -15,7 +15,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   sentry_flutter: ^6.2.0
-  routemaster:
+  routemaster: ^0.9.5
 
 dev_dependencies:
   flutter_lints: ^1.0.0
