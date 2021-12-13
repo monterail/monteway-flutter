@@ -75,3 +75,8 @@ build-prod-ipa:
 .PHONY: build-prod-web
 build-prod-web:
 	BUILD_TARGET=web make build-prod
+
+# Helpers
+.PHONY: create-android-signing
+create-android-signing:
+	keytool -genkey -v -keystore android/upload-keystore.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias upload

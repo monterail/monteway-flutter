@@ -219,3 +219,51 @@ Each app version should have brief notes for introduced changes in `CHANGELOG.md
 There is a `Makefile` with build scripts for _dev_ and _prod_ environment (those are standard `flutter build *` commands but with environment variables).
 
 Eg. to build _dev_ `.apk` run `make build-dev-apk`. For iOS there're `*-ipa`, and for web there're `*-web` scripts.
+
+## 🏎💨 CD with AppCenter
+
+We're using custom scripts to make [AppCenter](https://appcenter.ms/) support our app building process.
+
+There's one for Android (`android/app/appcenter-post-clone.sh`) and one for iOS (`ios/appcenter-post-clone.sh`). Those download Flutter, build _prod_ flavored app with signing
+and distributes it.
+
+### Android setup
+
+Firstly, create a keystore for signing.
+
+You need to have [Java installed](https://openjdk.java.net/) and available in the shell:
+
+- on mac, using [brew](https://brew.sh/): `brew install openjdk`,
+- on windows, just download a `.msi` file [from here](https://www.microsoft.com/openjdk),
+- on linux or wsl, there's probably `openjdk` available in your package manager.
+
+In the root project folder run: `make create-android-signing`.
+You will be asked some questions, but the passwords are the most important. Remember those and put
+in `android/app/build.gradle` in section `signingConfigs`:
+
+```gradle
+signingConfigs {
+    release {
+        storeFile rootProject.file("upload-keystore.jks") # leave as-is
+        storePassword "password" # put your store password here
+        keyAlias "upload" # leave as-is
+        keyPassword "password" # put your key password here
+    }
+}
+```
+
+To check if signing works, you can run `make build-prod-apk`. If the build process goes fine
+and the app is working it's done 🍾
+
+#### AppCenter Android setup
+
+To use signing in Android builds, set the AppCenter build like so:
+
+TODO:
+![config image](image)
+
+> To distribute the app automatically to the store, follow [this guide](https://docs.microsoft.com/en-us/appcenter/distribution/stores/googleplay).
+
+### iOS setup
+
+
