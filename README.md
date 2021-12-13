@@ -269,10 +269,8 @@ iOS builds will require `.mobileprovision` and `.p12` files. [Here's](https://do
 
 <img width="465" alt="Screenshot 2021-12-13 at 12 44 10" src="https://user-images.githubusercontent.com/15102395/145806541-104509d2-f81c-44bc-96f8-d53445557dd2.png">
 
-
 #### AppCenter iOS setup
 
 To use signing in iOS builds, set the AppCenter build like so:
 
 <img width="465" alt="Screenshot 2021-12-13 at 12 40 22" src="https://user-images.githubusercontent.com/15102395/145806568-aa100b39-3ad9-4aec-bfa2-765e20785cf4.png">
-
