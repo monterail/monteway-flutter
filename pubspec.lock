@@ -237,14 +237,14 @@ packages:
       name: sentry
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.2.0"
+    version: "6.2.1"
   sentry_flutter:
     dependency: "direct main"
     description:
       name: sentry_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.2.0"
+    version: "6.2.1"
   sky_engine:
     dependency: transitive
     description: flutter
