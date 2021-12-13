@@ -11,7 +11,7 @@ Supports:
 - [x] Flavors
 - [x] Routing
 - [ ] Testing
-- [ ] CI/CD with AppCenter
+- [x] CI/CD with AppCenter
 - [x] Setup for VS Code
 - [x] Sentry integration
 - [ ] ADR
