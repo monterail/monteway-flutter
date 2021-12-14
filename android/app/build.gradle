@@ -40,6 +40,8 @@ if (project.hasProperty('dart-defines')) {
             }
 }
 
+def appVersionCode = System.getenv('APPCENTER_BUILD_ID') ?: flutterVersionCode;
+
 android {
     compileSdkVersion 30
 
@@ -61,7 +63,7 @@ android {
         applicationIdSuffix dartEnvironmentVariables.APP_SUFFIX
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode System.getenv('APPCENTER_BUILD_ID').toInteger() ?: flutterVersionCode.toInteger()
+        versionCode appVersionCode.toInteger()
         versionName flutterVersionName
         resValue "string", "app_name", dartEnvironmentVariables.APP_NAME
     }
