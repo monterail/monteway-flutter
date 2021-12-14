@@ -80,3 +80,8 @@ build-prod-web:
 .PHONY: create-android-signing
 create-android-signing:
 	keytool -genkey -v -keystore android/upload-keystore.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+
+.PHONY: update-splashscreen
+update-splashscreen:
+	flutter pub run flutter_native_splash:create
+	
