@@ -1,11 +1,12 @@
 name: Lint and test PRs
 
-# Uncomment this to enable lint, format and tests on each PR 
-# on:
+on:
+  workflow_dispatch:
+# Uncomment lines below to enable lint, format and tests on each PR 
 #   pull_request:
 #     branches:
 #       - development
-    
+
 jobs:
   build:
     runs-on: ubuntu-latest
