@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:routemaster/routemaster.dart';
-import 'package:template/src/app.dart';
 import 'package:template/src/modules/bloc_screen/view/bloc_view.dart';
 import 'package:template/src/modules/cubit_screen/view/cubit_view.dart';
+import 'package:template/src/modules/main_screen/view/main_screen.dart';
+import 'package:template/src/modules/main_screen/view/main_screen_bloc_provider.dart';
 
 class Routes {
   // Routes without params
@@ -15,7 +16,11 @@ class Routes {
   // Route map
   static final routes = RouteMap(
     routes: {
-      main: (_) => const MaterialPage(child: TheScreenWidget()),
+      main: (_) => const MaterialPage(
+            child: MainScreenBlocProvider(
+              child: MainScreen(),
+            ),
+          ),
       blocRoute(): (info) => MaterialPage(
             child: BlocView(
               title: info.pathParameters['title'],

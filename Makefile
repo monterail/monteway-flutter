@@ -76,6 +76,24 @@ build-prod-ipa:
 build-prod-web:
 	BUILD_TARGET=web make build-prod
 
+# Tests
+.PHONY: test
+test:
+	flutter test \
+		--dart-define=APP_NAME="Test app" \
+		--dart-define=SENTRY_DSN=value \
+		--dart-define=APP_SUFFIX=.test \
+		--dart-define=SENTRY_ENVIRONMENT=test \
+		$(TEST_DIR)
+
+.PHONY: run-tests
+run-tests:
+	make test
+
+.PHONY: run-integration-tests
+run-integration-tests:
+	TEST_DIR=integration_test make test
+
 # Helpers
 .PHONY: create-android-signing
 create-android-signing:

@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sentry_flutter/sentry_flutter.dart' hide SentryClient;
+import 'package:template/src/services/sentry.dart';
 
 import 'src/app.dart';
 
-void main() async => await SentryFlutter.init(
-      (options) {
-        // Set tracesSampleRate to 1.0 to capture 100% of transactions
-        //for performance monitoring.
-        // Consider adjusting this value in production.
-        options.tracesSampleRate = 1.0;
+Future<void> main() => bootWithSentry();
+
+void boot() => runApp(const MyApp());
+
+Future<void> bootWithSentry() => SentryFlutter.init(
+      configureSentry,
+      appRunner: () {
+        BlocOverrides.runZoned(
+          () => runApp(const MyApp()),
+          blocObserver: SentryBlocObserver(
+            sentryIntegration: SentryClient(),
+          ),
+        );
       },
-      appRunner: () => runApp(const MyApp()),
     );
