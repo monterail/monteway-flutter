@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:template/src/repositories/user_repository/src/user_repository.dart';
 import 'src/app.dart';
 import 'src/repositories/user_repository/user_repository.dart';
 
