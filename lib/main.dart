@@ -21,5 +21,5 @@ void main() async {
 Future<void> _hiveSetup() async {
   await Hive.initFlutter();
   Hive.registerAdapter(UserAdapter());
-  await Hive.openBox(UserRepository.userInfoBoxKey);
+  await Hive.openBox('userInfoBoxKey');
 }

@@ -35,18 +35,18 @@ void main() {
     );
   });
 
-  //problem with testing Hive
+  //problem with Hive testing
 
   // group('Bloc main', () {
   //   setUp(() async {
   //     WidgetsFlutterBinding.ensureInitialized();
   //     await Hive.initFlutter();
   //     Hive.registerAdapter(UserAdapter());
-  //     await Hive.openBox(UserRepository.userInfoBoxKey);
+  //     await Hive.openBox('infoUserBoxKey');
   //   });
   //   blocTest<MainBloc, MainState>(
   //     'add user test',
-  //     build: () => MainBloc(),
+  //     build: () => MainBloc(userRepository: UserRepository()),
   //     act: (bloc) => {
   //       bloc.add(AddUserEvent()),
   //     },

@@ -1,17 +1,25 @@
 import 'package:hive/hive.dart';
+import 'package:template/src/repositories/user_repository/src/abstract_user_repository.dart';
 import 'models/models.dart';
 
-class UserRepository {
-  static const _userKey = 'userKey';
-  static const userInfoBoxKey = 'userInfoBoxKey';
+class UserRepository implements IUserRepository {
+  @override
+  Box getUserBox(String userInfoBoxKey) {
+    return Hive.box(userInfoBoxKey);
+  }
 
-  static Box get _userInfoBox => Hive.box(userInfoBoxKey);
+  @override
+  User? getUser(Box box, String userKey) {
+    return box.get(userKey);
+  }
 
-  static User? getUser() => _userInfoBox.get(_userKey);
+  @override
+  Future<void> saveUser(Box box, String userKey, User user) async {
+    await box.put(userKey, user);
+  }
 
-  static Future<void> saveUser(User user) async =>
-      await _userInfoBox.put(_userKey, user);
-
-  static Future<void> deleteUser(User user) async =>
-      await _userInfoBox.delete(_userKey);
+  @override
+  Future<void> deleteUser(Box box, String userKey, User user) async {
+    await box.delete(userKey);
+  }
 }

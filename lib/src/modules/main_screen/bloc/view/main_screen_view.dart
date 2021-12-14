@@ -6,6 +6,7 @@ import 'package:template/src/config/routes.dart';
 import 'package:template/src/modules/main_screen/bloc/main_bloc.dart';
 import 'package:template/src/environment/variables.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:template/src/repositories/user_repository/user_repository.dart';
 
 class MainScreenWidget extends StatelessWidget {
   const MainScreenWidget({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class MainScreenWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => MainBloc(),
+      create: (context) => MainBloc(userRepository: UserRepository()),
       child: Scaffold(
         body: Center(
           child: BlocBuilder<MainBloc, MainState>(

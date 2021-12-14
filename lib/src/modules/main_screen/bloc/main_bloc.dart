@@ -6,7 +6,9 @@ part 'main_event.dart';
 part 'main_state.dart';
 
 class MainBloc extends Bloc<MainEvent, MainState> {
-  MainBloc() : super(InitState()) {
+  final UserRepository userRepository;
+
+  MainBloc({required this.userRepository}) : super(InitState()) {
     on<InitEvent>(_init);
     on<AddUserEvent>(_saveUser);
     on<RemoveUserEvent>(_removeUser);
@@ -14,7 +16,8 @@ class MainBloc extends Bloc<MainEvent, MainState> {
 
   void _init(InitEvent event, Emitter<MainState> emit) {
     try {
-      final user = UserRepository?.getUser();
+      final box = userRepository.getUserBox('userInfoBoxKey');
+      final user = userRepository.getUser(box, 'userKey');
       emit(MainState(user: user));
     } catch (_) {}
   }
@@ -22,15 +25,18 @@ class MainBloc extends Bloc<MainEvent, MainState> {
   void _saveUser(AddUserEvent event, Emitter<MainState> emit) {
     final user = User(pk: 1, firstName: 'Jan', lastName: 'Nowak');
     try {
-      UserRepository?.saveUser(user);
+      final box = userRepository.getUserBox('userInfoBoxKey');
+      userRepository.saveUser(box, 'userKey', user);
       emit(MainState(user: user));
     } catch (_) {}
   }
 
   void _removeUser(RemoveUserEvent event, Emitter<MainState> emit) {
     try {
-      if (UserRepository?.getUser() != null) {
-        UserRepository?.deleteUser(UserRepository.getUser()!);
+      final box = userRepository.getUserBox('userInfoBoxKey');
+      final user = box.get('userKey');
+      if (user != null) {
+        userRepository.deleteUser(box, 'userKey', user);
         emit(const MainState());
       }
     } catch (_) {}
