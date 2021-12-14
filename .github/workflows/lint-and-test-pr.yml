@@ -1,9 +1,10 @@
 name: Lint and test PRs
 
-on:
-  pull_request:
-    branches:
-      - development
+# Uncomment this to enable lint, format and tests on each PR 
+# on:
+#   pull_request:
+#     branches:
+#       - development
     
 jobs:
   build:
