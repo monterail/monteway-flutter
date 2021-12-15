@@ -239,6 +239,76 @@ After creating Sentry project just pass the DSN to `--dart-define=SENTRY_DSN=val
 
 Each app version should have brief notes for introduced changes in `CHANGELOG.md`.
 
+## 📒 Caching, saving local data
+
+We use [Hive](https://docs.hivedb.dev/#/) database to store data locally. Hive is a lightweight, powerful database which runs fast on the device. 
+Unless you absolutely need to model your data with many relationships, choosing this pure-Dart package with no native dependencies can be the best option. 
+Hive is centered around the idea of `boxes`. `Box` has to be opened before use. In addition to the plain-flavored Boxes, 
+there are also options which support lazy-loading of values and encryption.
+
+### Initilization
+
+Hive needs to be ​initialized​ to, among other things, know in which directory it stores the data. It's best to initialize Hive right in the `main` method.
+
+For Flutter:
+```dart
+await Hive.initFlutter();
+```
+### Boxes
+
+Data can be stored and read only from an opened `Box`. Opening a `Box` loads all of its data from the local storage into memory for immediate access.
+
+1. Open box
+```dart
+Hive.openBox('userBox');
+```
+2. Get an already opened instance
+```dart
+Hive.box('name');
+```
+There are two basic options of adding data - either call `put(key, value)` and specify the key yourself, 
+or call `add` and utilize Hive's auto-incrementing keys. Unless you absolutely need to define the keys manually, 
+calling add is the better and simpler option.
+```dart
+userBox.add(User('Test User', 28));
+```
+
+#### TypeAdapter
+
+Hive works with binary data. While it's entirely possible to write a custom adapter which fumbles with a ​​​​​BinaryWriter and a BinaryReader, 
+it's much easier to let the ​`hive_generator`​ package do the hard job for you. Making an adapter for specific class is then as simple as adding a few annotations.
+
+Creating a TypeAdapter
+```dart
+import 'package:hive/hive.dart';
+
+part 'user.g.dart';
+
+@HiveType()
+class User {
+  @HiveField(0)
+  final String name;
+
+  @HiveField(1)
+  final int age;
+
+  User(this.name, this.age);
+}
+```
+To generate TypeAdapter you should run `flutter packages pub run build_runner build`. The created adapter must be registered.
+```dart
+Hive.registerAdapter(UserAdapter());
+```
+
+### Repositories
+
+Dependency injection is an object-oriented technique that sends the dependencies of another object to an object. Using dependency injection, 
+we can also move the creation and restriction of dependent objects outside the classes. This concept brings a more significant level of adaptability, decoupling, and simpler testing.
+Famous packages for DI:
+
+1. [ioc](https://pub.dev/packages/ioc#-readme-tab-)
+2. [get_it ](https://pub.dev/packages/get_it)
+
 ## 🏭 Building the app
 
 There is a `Makefile` with build scripts for _dev_ and _prod_ environment (those are standard `flutter build *` commands but with environment variables).
