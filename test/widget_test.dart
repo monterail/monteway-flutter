@@ -10,8 +10,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:template/src/app.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:template/src/modules/main_screen/bloc/view/main_screen_view.dart';
 
 void main() {
   group('MyWidget', () {
@@ -21,7 +21,7 @@ void main() {
         localizationsDelegates: [
           AppLocalizations.delegate,
         ],
-        home: TheScreenWidget(),
+        home: MainScreenWidget(),
       );
 
       // Build myWidget and trigger a frame.
