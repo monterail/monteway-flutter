@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:routemaster/routemaster.dart';
 import 'package:template/src/modules/bloc_screen/view/bloc_view.dart';
 import 'package:template/src/modules/cubit_screen/view/cubit_view.dart';
-import 'package:template/src/modules/main_screen/bloc/view/main_screen_view.dart';
+import 'package:template/src/modules/main_screen/view/main_screen_view.dart';
 
 class Routes {
   // Routes without params

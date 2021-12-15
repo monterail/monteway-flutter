@@ -1,25 +1,23 @@
-import 'package:hive/hive.dart';
 import 'package:template/src/repositories/user_repository/src/abstract_user_repository.dart';
+import 'package:template/src/services/hive.dart';
 import 'models/models.dart';
 
-class UserRepository implements IUserRepository {
+class UserRepository with IHiveRepository<User> implements IUserRepository {
   @override
-  Box getUserBox(String userInfoBoxKey) {
-    return Hive.box(userInfoBoxKey);
+  String get boxKey => 'userInfoBoxKey';
+
+  @override
+  Future<User?> getUser(String userKey) async {
+    return (await box).get(userKey);
   }
 
   @override
-  User? getUser(Box box, String userKey) {
-    return box.get(userKey);
+  Future<void> saveUser(String userKey, User user) async {
+    await (await box).put(userKey, user);
   }
 
   @override
-  Future<void> saveUser(Box box, String userKey, User user) async {
-    await box.put(userKey, user);
-  }
-
-  @override
-  Future<void> deleteUser(Box box, String userKey, User user) async {
-    await box.delete(userKey);
+  Future<void> deleteUser(String userKey, User user) async {
+    await (await box).delete(userKey);
   }
 }

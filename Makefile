@@ -76,6 +76,33 @@ build-prod-ipa:
 build-prod-web:
 	BUILD_TARGET=web make build-prod
 
+# Tests
+.PHONY: test
+test:
+	flutter test \
+		--dart-define=APP_NAME="Test app" \
+		--dart-define=SENTRY_DSN=value \
+		--dart-define=APP_SUFFIX=.test \
+		--dart-define=SENTRY_ENVIRONMENT=test \
+		$(TEST_DIR)
+
+.PHONY: run-tests
+run-tests:
+	make test
+
+.PHONY: run-integration-tests
+run-integration-tests:
+	TEST_DIR=integration_test make test
+
+# Code generation
+.PHONY: generate-code
+generate-code:
+	flutter packages pub run build_runner build --delete-conflicting-outputs
+
+.PHONY: watch-and-generate-code
+watch-and-generate-code:
+	flutter packages pub run build_runner watch --delete-conflicting-outputs
+
 # Helpers
 .PHONY: create-android-signing
 create-android-signing:
@@ -84,4 +111,3 @@ create-android-signing:
 .PHONY: update-splashscreen
 update-splashscreen:
 	flutter pub run flutter_native_splash:create
-	
