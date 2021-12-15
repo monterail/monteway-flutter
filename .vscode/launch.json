@@ -11,7 +11,7 @@
       "args": [
         "--dart-define=APP_NAME=Dev app",
         "--dart-define=APP_SUFFIX=.dev",
-        "--dart-define=SENTRY_DSN=https://013305046ba44f6ba46c054d7b84c826@o1087314.ingest.sentry.io/6100304",
+        "--dart-define=SENTRY_DSN=value",
         "--dart-define=SENTRY_ENVIRONMENT=development"
       ]
     },
@@ -23,7 +23,7 @@
       "args": [
         "--dart-define=APP_NAME=Dev app",
         "--dart-define=APP_SUFFIX=.dev",
-        "--dart-define=SENTRY_DSN=https://013305046ba44f6ba46c054d7b84c826@o1087314.ingest.sentry.io/6100304",
+        "--dart-define=SENTRY_DSN=value",
         "--dart-define=SENTRY_ENVIRONMENT=development"
       ]
     },
