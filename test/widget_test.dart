@@ -11,17 +11,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:template/src/modules/main_screen/view/main_screen_view.dart';
 
 void main() {
   group('MyWidget', () {
     testWidgets('should display a localized text', (WidgetTester tester) async {
       // Define a Widget
-      const myWidget = MaterialApp(
-        localizationsDelegates: [
+      final myWidget = MaterialApp(
+        localizationsDelegates: const [
           AppLocalizations.delegate,
         ],
-        home: MainScreenWidget(),
+        home: Builder(builder: (context) {
+          return Text(AppLocalizations.of(context)!.appTitle);
+        }),
       );
 
       // Build myWidget and trigger a frame.
