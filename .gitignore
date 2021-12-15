@@ -3,6 +3,7 @@
 *.log
 *.pyc
 *.swp
+*.g.dart
 .DS_Store
 .atom/
 .buildlog/
@@ -44,3 +45,7 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Generated Dart source code
+*.g.dart
+

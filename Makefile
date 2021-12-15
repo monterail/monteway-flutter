@@ -94,6 +94,15 @@ run-tests:
 run-integration-tests:
 	TEST_DIR=integration_test make test
 
+# Code generation
+.PHONY: generate-code
+generate-code:
+	flutter packages pub run build_runner build --delete-conflicting-outputs
+
+.PHONY: watch-and-generate-code
+watch-and-generate-code:
+	flutter packages pub run build_runner watch --delete-conflicting-outputs
+
 # Helpers
 .PHONY: create-android-signing
 create-android-signing:
@@ -102,4 +111,3 @@ create-android-signing:
 .PHONY: update-splashscreen
 update-splashscreen:
 	flutter pub run flutter_native_splash:create
-	

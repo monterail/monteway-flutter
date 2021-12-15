@@ -1,10 +1,13 @@
 part of 'main_screen_bloc.dart';
 
-abstract class MainScreenState extends Equatable {
-  const MainScreenState();
-  
+class MainScreenState extends Equatable {
+  final User? user;
+  const MainScreenState({
+    this.user,
+  });
+
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [user];
 }
 
-class MainScreenInitial extends MainScreenState {}
+class InitState extends MainScreenState {}

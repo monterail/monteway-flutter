@@ -12,7 +12,7 @@ void main() {
     (tester) async {
       // Use .boot() instead of .main() since Sentry wrapper breaks
       // Flutter's ability to probe current app state.
-      app.boot();
+      await app.boot();
       await tester.pumpAndSettle();
 
       final blocRouteButton = find.widgetWithText(

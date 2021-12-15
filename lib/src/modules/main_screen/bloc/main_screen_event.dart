@@ -7,4 +7,10 @@ abstract class MainScreenEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class InitEvent extends MainScreenEvent {}
+
+class AddUserEvent extends MainScreenEvent {}
+
+class RemoveUserEvent extends MainScreenEvent {}
+
 class ReportSentryError extends MainScreenEvent {}

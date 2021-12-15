@@ -365,6 +365,10 @@ integration tests on workflow interactions.
 
 Look at [Flutter integration testing docs](https://docs.flutter.dev/cookbook/testing/integration/introduction).
 
+We're keeping integration tests in `integration_test` directory.
+
+To run integration tests, use `make run-integration-test`.
+
 ## 🍾 Starting new project
 
 Perform this checklist: [Template using checklist](doc/template-start-checklist.md).
