@@ -248,11 +248,32 @@ there are also options which support lazy-loading of values and encryption.
 
 ### Initilization
 
-Hive needs to be ​initialized​ to, among other things, know in which directory it stores the data. It's best to initialize Hive right in the `main` method.
+Hive needs to be ​initialized​ to, among other things, know in which directory it stores the data. A service for hive was created. 
+The `setupHive` method initializes hive for flutter and registers adapters and is called in `main`. 
+`IHiveRepository<E>` is an abstract class, where `E` is a specific type depending on the type of data being stored. 
 
 For Flutter:
 ```dart
-await Hive.initFlutter();
+Future<void> setupHive() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  _registerAdapters();
+}
+
+void _registerAdapters() {
+  Hive.registerAdapter<User>(UserAdapter());
+}
+
+abstract class IHiveRepository<E> {
+  Box<E>? _box;
+
+  String get boxKey;
+
+  Future<Box<E>> get box async {
+    _box ??= await Hive.openBox<E>(boxKey);
+    return _box!;
+  }
+}
 ```
 ### Boxes
 
