@@ -10,13 +10,13 @@ Supports:
 - [x] State management with bloc
 - [x] Flavors
 - [x] Routing
-- [ ] Testing
+- [x] Testing
 - [x] CI/CD with AppCenter
 - [x] Setup for VS Code
 - [x] Sentry integration
 - [x] ADR
 - [x] Changelog
-- [ ] Caching, saving local data
+- [x] Caching, saving local data
 
 ## 👋 Getting Started
 
