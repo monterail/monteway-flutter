@@ -250,9 +250,9 @@ there are also options which support lazy-loading of values and encryption.
 
 Hive needs to be ​initialized​ to, among other things, know in which directory it stores the data. A service for hive was created. 
 The `setupHive` method initializes hive for flutter and registers adapters and is called in `main`. 
-`IHiveRepository<E>` is an abstract class, where `E` is a specific type depending on the type of data being stored. 
+`IHiveRepository<E>` is an mixin that manages Hive box opening, where `E` is a specific type depending on the type of data being stored. 
 
-For Flutter:
+Hive service
 ```dart
 Future<void> setupHive() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -275,6 +275,31 @@ abstract class IHiveRepository<E> {
   }
 }
 ```
+
+`IHiveRepository` should be used with every repository that is using Hive.
+
+Example
+```dart
+class UserRepository with IHiveRepository<User> implements IUserRepository {
+  @override
+  String get boxKey => 'userInfoBoxKey';
+
+  @override
+  Future<User?> getUser(String userKey) async {
+    return (await box).get(userKey);
+  }
+
+  @override
+  Future<void> saveUser(String userKey, User user) async {
+    await (await box).put(userKey, user);
+  }
+
+  @override
+  Future<void> deleteUser(String userKey, User user) async {
+    await (await box).delete(userKey);
+  }
+```
+
 ### Boxes
 
 Data can be stored and read only from an opened `Box`. Opening a `Box` loads all of its data from the local storage into memory for immediate access.
@@ -316,10 +341,10 @@ class User {
   User(this.name, this.age);
 }
 ```
-To generate TypeAdapter you should run `flutter packages pub run build_runner build`. The created adapter must be registered.
-```dart
-Hive.registerAdapter(UserAdapter());
-```
+To generate TypeAdapter you should run `flutter packages pub run build_runner build`. Thanks to the `Makefile` scripts, we can do this with `make generate-code`
+`make watch-and-generate-code` until stopped will watch for file changes and automatically build code if necessary. 
+It's useful when dealing with a lot of code generation since it'll do a whole project build only at start and then do smaller builds only for affected files.
+The created adapter must be registered.
 
 ### Repositories
 
