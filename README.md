@@ -276,30 +276,6 @@ abstract class IHiveRepository<E> {
 }
 ```
 
-`IHiveRepository` should be used with every repository that is using Hive.
-
-Example
-```dart
-class UserRepository with IHiveRepository<User> implements IUserRepository {
-  @override
-  String get boxKey => 'userInfoBoxKey';
-
-  @override
-  Future<User?> getUser(String userKey) async {
-    return (await box).get(userKey);
-  }
-
-  @override
-  Future<void> saveUser(String userKey, User user) async {
-    await (await box).put(userKey, user);
-  }
-
-  @override
-  Future<void> deleteUser(String userKey, User user) async {
-    await (await box).delete(userKey);
-  }
-```
-
 ### Boxes
 
 Data can be stored and read only from an opened `Box`. Opening a `Box` loads all of its data from the local storage into memory for immediate access.
@@ -347,6 +323,31 @@ It's useful when dealing with a lot of code generation since it'll do a whole pr
 The created adapter must be registered.
 
 ### Repositories
+
+`IHiveRepository` should be used with every repository that is using Hive.
+
+Example
+```dart
+class UserRepository with IHiveRepository<User> implements IUserRepository {
+  @override
+  String get boxKey => 'userInfoBoxKey';
+
+  @override
+  Future<User?> getUser(String userKey) async {
+    return (await box).get(userKey);
+  }
+
+  @override
+  Future<void> saveUser(String userKey, User user) async {
+    await (await box).put(userKey, user);
+  }
+
+  @override
+  Future<void> deleteUser(String userKey, User user) async {
+    await (await box).delete(userKey);
+  }
+```
+#### Dependency injection
 
 Dependency injection is an object-oriented technique that sends the dependencies of another object to an object. Using dependency injection, 
 we can also move the creation and restriction of dependent objects outside the classes. This concept brings a more significant level of adaptability, decoupling, and simpler testing.
