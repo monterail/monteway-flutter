@@ -15,4 +15,6 @@ flutter doctor
 
 echo "Installed flutter to `pwd`/flutter"
 
+flutter pub get
+make generate-code
 make build-prod-ios
