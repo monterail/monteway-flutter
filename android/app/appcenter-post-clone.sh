@@ -17,6 +17,9 @@ flutter doctor
 
 echo "Installed flutter to `pwd`/flutter"
 
+flutter pub get
+make generate-code
+
 # build APK
 make build-prod-apk
 
