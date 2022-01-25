@@ -1,6 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:routemaster/routemaster.dart';
 import 'package:template/src/config/routes.dart';
 import 'package:template/src/modules/main_screen/bloc/main_screen_bloc.dart';
 import 'package:template/src/environment/variables.dart';
@@ -41,13 +41,13 @@ class MainScreenWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       TextButton(
-                        onPressed: () => Routemaster.of(context).push(
+                        onPressed: () => context.router.pushNamed(
                           Routes.cubitRoute(title: 'Cubit'),
                         ),
                         child: const Text('To cubit screen'),
                       ),
                       TextButton(
-                        onPressed: () => Routemaster.of(context).push(
+                        onPressed: () => context.router.pushNamed(
                           Routes.blocRoute(title: 'BLoC'),
                         ),
                         child: const Text('To BLoC screen'),
