@@ -14,7 +14,7 @@ dependencies:
   equatable: ^2.0.3
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.0.0
+  flutter_bloc: ^8.0.1
   flutter_localizations:
     sdk: flutter
   hive: ^2.0.4
