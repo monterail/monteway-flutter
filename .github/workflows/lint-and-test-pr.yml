@@ -19,7 +19,8 @@ jobs:
           channel: 'stable' # 'dev', 'alpha', default to: 'stable'
           # flutter-version: '1.12.x' # you can also specify exact version of flutter
       
-      - run: flutter pub get  
+      - run: flutter pub get
+      - run: make generate-code
       - run: flutter format --set-exit-if-changed .
       - run: flutter analyze .
       - run: flutter test
