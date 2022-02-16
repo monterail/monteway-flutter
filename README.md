@@ -181,65 +181,49 @@ Also, for VS Code:
 
 ## 🧭 Routing
 
-By default [auto_route](https://pub.dev/packages/auto_route) is used as route management. It provides us opportunity to easily send params to our routes.
+By default [Routemaster](https://pub.dev/packages/routemaster) is used as route management. it provides us opportunity to easily send params to our routes.
 
-To create some route without params, add a page in `lib/src/config/routes.dart`:
+To create some route without params:
 
+1. Define path as a static constant
 ```dart
-@AdaptiveAutoRouter(routes: [
-  ...
-  AutoRoute(page: View, path: '/path'),
-  ...
-])
-class AppRouter extends _$AppRouter {}
+  static const main = '/';
+```
+2. Add pair of your path and widget to routes map
+```dart
+RouteMap(
+  routes: {
+    main: (_) => const MaterialPage(child: TheScreenWidget()),
+    },
+  );
 ```
 
 To create route with some parameter:
 
-1. Add a page in `lib/src/config/routes.dart` with defined parameter
-
+1. Define path as static method that has named parameters.
 ```dart
-@AdaptiveAutoRouter(routes: [
-  ...
-  AutoRoute(page: ParamView, path: '/path/:paramName'),
-  ...
-])
-class AppRouter extends _$AppRouter {}
+  static String cubitRoute({String? title}) => '/cubit/${title ?? ':title'}';
 ```
-
-2. Annotate param in the target widget's constructor
-
+2. Add pair to routes map
 ```dart
-class ParamView extends StatelessWidget {
-  final String? param;
-  const BlocView({@PathParam('paramName') this.param, Key? key}) : super(key: key);
-  ...
-```
-
-### `Routes` helper class
-
-`Routes` class in `lib/src/config/routes.dart` is used to manage named routes.
-Storing those in one place allows us to avoid string path names sprinkled around the app
-which will make route name change process very tedious and error-prone.
-
-Routes without parameters can be stored as a simple constant string variable.
-
-```dart
-static const main = '/';
-```
-
-Routes with required or optional parameters should have its' own function that constructs
-the path with given params.
-
-```dart
-static String paramRoute({required String param}) => '/bloc/$param';
+RouteMap(
+  routes: {
+    // Defined path is '/cubit/:title'
+    cubitRoute(): (info) => MaterialPage(
+      child: CubitView(
+        title: info.pathParameters['title'],
+        ),
+      ),
+    },
+  );
 ```
 
 To send some parameters to the screen:
-
 ```dart
-context.router.pushNamed(Routes.paramRoute('param'));
+Routemaster.of(context).push(Routes.cubitRoute('BLoC'));
 ```
+
+You also can use your route without parameters, in this case, the provided value will be `null`
 
 ## 📈 Sentry
 
@@ -413,7 +397,7 @@ and the app is working it's done 🍾
 
 To use signing in Android builds, set the AppCenter build like so:
 
-<img width="515" alt="Screenshot 2021-12-13 at 12 24 36" src="https://user-images.githubusercontent.com/15102395/145804858-283ecf48-62aa-4294-b025-2825ecc61ace.png">
+<img width="466" alt="image" src="https://user-images.githubusercontent.com/15102395/154212761-1ea57fa3-9cc9-4e92-b665-b22a25ecb180.png">
 
 > To distribute the app automatically to the store, follow [this guide](https://docs.microsoft.com/en-us/appcenter/distribution/stores/googleplay).
 
