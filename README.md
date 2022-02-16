@@ -413,7 +413,7 @@ and the app is working it's done 🍾
 
 To use signing in Android builds, set the AppCenter build like so:
 
-<img width="515" alt="Screenshot 2021-12-13 at 12 24 36" src="https://user-images.githubusercontent.com/15102395/145804858-283ecf48-62aa-4294-b025-2825ecc61ace.png">
+<img width="466" alt="image" src="https://user-images.githubusercontent.com/15102395/154212761-1ea57fa3-9cc9-4e92-b665-b22a25ecb180.png">
 
 > To distribute the app automatically to the store, follow [this guide](https://docs.microsoft.com/en-us/appcenter/distribution/stores/googleplay).
 
