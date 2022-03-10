@@ -420,8 +420,9 @@ Eg. to build _dev_ `.apk` run `make build-dev-apk`. For iOS there're `*-ipa`, an
 
 We're using custom scripts to make [AppCenter](https://appcenter.ms/) support our app building process.
 
-There's one for Android (`android/app/appcenter-post-clone.sh`) and one for iOS (`ios/appcenter-post-clone.sh`). Those download Flutter, build _prod_ flavored app with signing
-and distributes it.
+There's one for Android (`android/app/appcenter-post-clone.sh`) and one for iOS (`ios/appcenter-post-clone.sh`). Those download latest stable Flutter and build _prod_ flavored app with signing.
+
+> To build the _dev_ flavored app, set a RELEASE_TARGET environment variable to `development` in branch build configuration.
 
 ### Android setup
 
