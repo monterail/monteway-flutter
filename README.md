@@ -183,63 +183,105 @@ Also, for VS Code:
 
 By default [auto_route](https://pub.dev/packages/auto_route) is used as route management. It provides us opportunity to easily send params to our routes.
 
-To create some route without params, add a page in `lib/src/config/routes.dart`:
+### Add a route with parameter
+
+To create a route with a parameter:
+
+1. Add a `RouteHelper` class in `lib/src/config/routes/` directory with defined parameter:
 
 ```dart
-@AdaptiveAutoRouter(routes: [
-  ...
-  AutoRoute(page: View, path: '/path'),
-  ...
-])
-class AppRouter extends _$AppRouter {}
+import 'package:template/src/config/routes/routes.dart';
+import 'package:template/src/modules/bloc_screen/view/bloc_view.dart';
+export 'package:template/src/modules/bloc_screen/view/bloc_view.dart';
+
+class BlocRouteHelper extends RouteHelper<String> {
+  static const path = '/bloc/:title';
+  static const widget = BlocView;
+
+  const BlocRouteHelper() : super(path: path);
+
+  @override
+  String generatePath(String title) =>
+      absolutePath.replaceFirst(':title', title);
+}
 ```
 
-To create route with some parameter:
+> Be sure to export the widget file.
 
-1. Add a page in `lib/src/config/routes.dart` with defined parameter
-
-```dart
-@AdaptiveAutoRouter(routes: [
-  ...
-  AutoRoute(page: ParamView, path: '/path/:paramName'),
-  ...
-])
-class AppRouter extends _$AppRouter {}
-```
-
-2. Annotate param in the target widget's constructor
+2. Annotate parameter in the target widget's constructor
 
 ```dart
 class ParamView extends StatelessWidget {
-  final String? param;
-  const BlocView({@PathParam('paramName') this.param, Key? key}) : super(key: key);
+  final String? title;
+  const BlocView({@PathParam('title') this.title, Key? key}) : super(key: key);
   ...
 ```
 
-### `Routes` helper class
-
-`Routes` class in `lib/src/config/routes.dart` is used to manage named routes.
-Storing those in one place allows us to avoid string path names sprinkled around the app
-which will make route name change process very tedious and error-prone.
-
-Routes without parameters can be stored as a simple constant string variable.
+3. Add the route helper to `Routes` (`lib/src/config/routes.dart`) class
 
 ```dart
-static const main = '/';
+class Routes {
+  // ...
+  static const bloc = BlocRouteHelper();
+  // ...
+}
 ```
 
-Routes with required or optional parameters should have its' own function that constructs
-the path with given params.
+4. Let `auto_route` know about the new route
 
 ```dart
-static String paramRoute({required String param}) => '/bloc/$param';
+@AdaptiveAutoRouter(routes: [
+  // ...
+  AutoRoute(page: BlocRouteHelper.widget, path: BlocRouteHelper.path),
+  // ...
+])
+class AppRouter extends _$AppRouter {}
 ```
 
-To send some parameters to the screen:
+5. Run `make generate-code` to make the new route available in the app.
+
+### Add a route without parameter
+
+To create a route without any parameters:
+
+1. Add a `ParameterlessRouteHelper` class in `lib/src/config/routes/` directory:
 
 ```dart
-context.router.pushNamed(Routes.paramRoute('param'));
+import 'package:template/src/config/routes/routes.dart';
+import 'package:template/src/modules/main_screen/view/main_screen_view.dart';
+export 'package:template/src/modules/main_screen/view/main_screen_view.dart';
+
+class MainRouteHelper extends ParameterlessRouteHelper {
+  static const path = '/';
+  static const widget = MainScreenWidget;
+  const MainRouteHelper() : super(path: path);
+}
 ```
+
+> Be sure to export the widget file.
+
+2. Add the route helper to `Routes` (`lib/src/config/routes.dart`) class
+
+```dart
+class Routes {
+  // ...
+  static const main = MainRouteHelper();
+  // ...
+}
+```
+
+3. Let `auto_route` know about the new route
+
+```dart
+@AdaptiveAutoRouter(routes: [
+  // ...
+  AutoRoute(page: MainRouteHelper.widget, path: MainRouteHelper.path),
+  // ...
+])
+class AppRouter extends _$AppRouter {}
+```
+
+4. Run `make generate-code` to make the new route available in the app.
 
 ## 📈 Sentry
 
