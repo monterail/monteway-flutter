@@ -206,7 +206,7 @@ class BlocRouteHelper extends RouteHelper<String> {
 }
 ```
 
-> Be sure to export the widget file.
+> **Be sure to export the widget file.**
 
 2. Annotate parameter in the target widget's constructor
 
@@ -258,7 +258,7 @@ class MainRouteHelper extends ParameterlessRouteHelper {
 }
 ```
 
-> Be sure to export the widget file.
+> **Be sure to export the widget file.**
 
 2. Add the route helper to `Routes` (`lib/src/config/routes.dart`) class
 
