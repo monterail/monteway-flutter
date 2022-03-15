@@ -10,7 +10,7 @@ Future<void> main() => bootWithSentry();
 
 Future<void> boot() async {
   await setupHive();
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 Future<void> bootWithSentry() async {
@@ -19,7 +19,7 @@ Future<void> bootWithSentry() async {
     configureSentry,
     appRunner: () {
       BlocOverrides.runZoned(
-        () => runApp(const MyApp()),
+        () => runApp(MyApp()),
         blocObserver: SentryBlocObserver(
           sentryIntegration: SentryClient(),
         ),

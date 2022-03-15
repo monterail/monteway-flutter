@@ -1,23 +1,24 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:template/src/modules/bloc_screen/view/bloc_view.dart';
-import 'package:template/src/modules/cubit_screen/view/cubit_view.dart';
-import 'package:template/src/modules/main_screen/view/main_screen_view.dart';
+import 'package:template/src/config/routes/bloc.dart';
+import 'package:template/src/config/routes/cubit.dart';
+import 'package:template/src/config/routes/main.dart';
 
 part 'routes.gr.dart';
 
 class Routes {
-  // Routes without params
-  static const main = '/';
-
-  // Routes with params
-  static String blocRoute({String? title}) => '/bloc/${title ?? ':title'}';
-  static String cubitRoute({String? title}) => '/cubit/${title ?? ':title'}';
+  static const main = MainRouteHelper();
+  static const bloc = BlocRouteHelper();
+  static const cubit = CubitRouteHelper();
 }
 
 @AdaptiveAutoRouter(routes: [
-  AutoRoute(page: MainScreenWidget, initial: true),
-  AutoRoute(page: BlocView, path: '/bloc/:title'),
-  AutoRoute(page: CubitView, path: '/cubit/:title')
+  AutoRoute(
+    page: MainRouteHelper.widget,
+    path: MainRouteHelper.path,
+    initial: true,
+  ),
+  AutoRoute(page: BlocRouteHelper.widget, path: BlocRouteHelper.path),
+  AutoRoute(page: CubitRouteHelper.widget, path: CubitRouteHelper.path)
 ])
 class AppRouter extends _$AppRouter {}

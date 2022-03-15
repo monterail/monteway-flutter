@@ -42,13 +42,13 @@ class MainScreenWidget extends StatelessWidget {
                     children: [
                       TextButton(
                         onPressed: () => context.router.pushNamed(
-                          Routes.cubitRoute(title: 'Cubit'),
+                          Routes.cubit.generatePath('Cubit'),
                         ),
                         child: const Text('To cubit screen'),
                       ),
                       TextButton(
                         onPressed: () => context.router.pushNamed(
-                          Routes.blocRoute(title: 'BLoC'),
+                          Routes.bloc.generatePath('BLoC'),
                         ),
                         child: const Text('To BLoC screen'),
                       ),
