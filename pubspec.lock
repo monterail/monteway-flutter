@@ -50,6 +50,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.2.3"
+  autoequal:
+    dependency: "direct main"
+    description:
+      name: autoequal
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.0"
+  autoequal_gen:
+    dependency: "direct dev"
+    description:
+      name: autoequal_gen
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.0"
   bloc:
     dependency: transitive
     description:
