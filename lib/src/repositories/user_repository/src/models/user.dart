@@ -1,19 +1,22 @@
+import 'package:autoequal/autoequal.dart';
+import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 
 part 'user.g.dart';
 
+@autoequalMixin
 @HiveType(typeId: 1)
-class User {
+class User extends Equatable with _$UserAutoequalMixin {
   @HiveField(0)
-  int pk;
+  final int pk;
   @HiveField(1)
-  String? email;
+  final String? email;
   @HiveField(2)
-  String? phone;
+  final String? phone;
   @HiveField(3)
-  String? firstName;
+  final String? firstName;
   @HiveField(4)
-  String? lastName;
+  final String? lastName;
 
   User({
     required this.pk,
