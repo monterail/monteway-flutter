@@ -4,13 +4,19 @@ abstract class MainScreenEvent extends Equatable {
   const MainScreenEvent();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
-class InitEvent extends MainScreenEvent {}
+@autoequalMixin
+class InitEvent extends MainScreenEvent with _$InitEventAutoequalMixin {}
 
-class AddUserEvent extends MainScreenEvent {}
+@autoequalMixin
+class AddUserEvent extends MainScreenEvent with _$AddUserEventAutoequalMixin {}
 
-class RemoveUserEvent extends MainScreenEvent {}
+@autoequalMixin
+class RemoveUserEvent extends MainScreenEvent
+    with _$RemoveUserEventAutoequalMixin {}
 
-class ReportSentryError extends MainScreenEvent {}
+@autoequalMixin
+class ReportSentryError extends MainScreenEvent
+    with _$ReportSentryErrorAutoequalMixin {}

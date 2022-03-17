@@ -1,13 +1,11 @@
 part of 'main_screen_bloc.dart';
 
-class MainScreenState extends Equatable {
+@autoequalMixin
+class MainScreenState extends Equatable with _$MainScreenStateAutoequalMixin {
   final User? user;
   const MainScreenState({
     this.user,
   });
-
-  @override
-  List<Object?> get props => [user];
 }
 
 class InitState extends MainScreenState {}

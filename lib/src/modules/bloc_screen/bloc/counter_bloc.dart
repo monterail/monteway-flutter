@@ -1,6 +1,8 @@
+import 'package:autoequal/autoequal.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
+part 'counter_bloc.g.dart';
 part 'counter_event.dart';
 part 'counter_state.dart';
 
