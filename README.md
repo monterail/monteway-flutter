@@ -397,7 +397,7 @@ class UserRepository with IHiveRepository<User> implements IUserRepository {
   }
 
   @override
-  Future<void> deleteUser(String userKey, User user) async {
+  Future<void> deleteUser(String userKey) async {
     await (await box).delete(userKey);
   }
 ```
