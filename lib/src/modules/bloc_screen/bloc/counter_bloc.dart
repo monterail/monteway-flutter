@@ -1,5 +1,6 @@
 import 'package:autoequal/autoequal.dart';
 import 'package:bloc/bloc.dart';
+import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart';
 
 part 'counter_bloc.g.dart';
@@ -13,10 +14,10 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
   }
 
   void _onIncreased(CounterIncreased event, Emitter<CounterState> emit) {
-    emit(state.copyWith(value: state.value + 1));
+    emit(state.copyWith.value(state.value + 1));
   }
 
   void _onDecreased(CounterDecreased event, Emitter<CounterState> emit) {
-    emit(state.copyWith(value: state.value - 1));
+    emit(state.copyWith.value(state.value - 1));
   }
 }
