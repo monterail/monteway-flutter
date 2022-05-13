@@ -1,6 +1,6 @@
 import 'package:autoequal/autoequal.dart';
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:template/src/repositories/user_repository/user_repository.dart';
 
 part 'main_screen_bloc.g.dart';
