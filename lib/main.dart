@@ -18,12 +18,10 @@ Future<void> bootWithSentry() async {
   return SentryFlutter.init(
     configureSentry,
     appRunner: () {
-      BlocOverrides.runZoned(
-        () => runApp(MyApp()),
-        blocObserver: SentryBlocObserver(
-          sentryIntegration: SentryClient(),
-        ),
+      Bloc.observer = SentryBlocObserver(
+        sentryIntegration: SentryClient(),
       );
+      runApp(MyApp());
     },
   );
 }
