@@ -8,7 +8,7 @@ void main() {
       'increase actions',
       build: () => CounterBloc(),
       act: (bloc) => [
-        for (int i = 0; i < 4; i++) bloc.add(CounterIncreased()),
+        for (int i = 0; i < 4; i++) bloc.add(const CounterEvent.increased()),
       ],
       expect: () => const <CounterState>[
         CounterState(value: 1),
@@ -21,7 +21,9 @@ void main() {
     blocTest<CounterBloc, CounterState>(
       'decrease actions',
       build: () => CounterBloc(),
-      act: (bloc) => [for (int i = 0; i < 4; i++) bloc.add(CounterDecreased())],
+      act: (bloc) => [
+        for (int i = 0; i < 4; i++) bloc.add(const CounterEvent.decreased())
+      ],
       expect: () => const <CounterState>[
         CounterState(value: -1),
         CounterState(value: -2),
