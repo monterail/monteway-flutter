@@ -1,13 +1,7 @@
 part of 'counter_bloc.dart';
 
-abstract class CounterEvent extends Equatable {
-  const CounterEvent();
+@freezed
+class CounterEvent with _$CounterEvent {
+  const factory CounterEvent.increased() = _Increased;
+  const factory CounterEvent.decreased() = _Decreased;
 }
-
-@autoequalMixin
-class CounterIncreased extends CounterEvent
-    with _$CounterIncreasedAutoequalMixin {}
-
-@autoequalMixin
-class CounterDecreased extends CounterEvent
-    with _$CounterDecreasedAutoequalMixin {}

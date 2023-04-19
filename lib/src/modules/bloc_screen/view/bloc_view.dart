@@ -24,15 +24,17 @@ class BlocView extends StatelessWidget {
                 children: [
                   FloatingActionButton(
                     heroTag: 'minusBtn',
-                    onPressed: () =>
-                        context.read<CounterBloc>().add(CounterDecreased()),
+                    onPressed: () => context
+                        .read<CounterBloc>()
+                        .add(const CounterEvent.decreased()),
                     child: const Icon(Icons.remove),
                   ),
                   Text('${state.value}'),
                   FloatingActionButton(
                     heroTag: 'plusBtn',
-                    onPressed: () =>
-                        context.read<CounterBloc>().add(CounterIncreased()),
+                    onPressed: () => context
+                        .read<CounterBloc>()
+                        .add(const CounterEvent.decreased()),
                     child: const Icon(Icons.add),
                   ),
                 ],
