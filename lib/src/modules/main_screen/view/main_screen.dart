@@ -7,8 +7,9 @@ import 'package:template/src/environment/variables.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:template/src/repositories/user_repository/user_repository.dart';
 
-class MainScreenWidget extends StatelessWidget {
-  const MainScreenWidget({Key? key}) : super(key: key);
+@RoutePage()
+class MainScreen extends StatelessWidget {
+  const MainScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,15 +42,13 @@ class MainScreenWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       TextButton(
-                        onPressed: () => context.router.pushNamed(
-                          Routes.cubit.generatePath('Cubit'),
-                        ),
+                        onPressed: () =>
+                            context.router.push(CubitRoute(title: 'Cubit')),
                         child: const Text('To cubit screen'),
                       ),
                       TextButton(
-                        onPressed: () => context.router.pushNamed(
-                          Routes.bloc.generatePath('BLoC'),
-                        ),
+                        onPressed: () =>
+                            context.router.push(BlocRoute(title: 'BLoC')),
                         child: const Text('To BLoC screen'),
                       ),
                     ],

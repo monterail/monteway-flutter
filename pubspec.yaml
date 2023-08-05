@@ -7,10 +7,10 @@ publish_to: 'none'
 version: 1.0.1+2
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
-  auto_route: ^5.0.1
+  auto_route: ^7.8.0
   autoequal: ^0.5.1
   copy_with_extension: ^5.0.0
   equatable: ^2.0.3
@@ -21,13 +21,13 @@ dependencies:
     sdk: flutter
   hive: ^2.0.6
   hive_flutter: ^1.1.0
-  sentry_flutter: ^6.3.0
-  freezed: ^2.3.2
+  sentry_flutter: ^7.9.0
+  freezed: ^2.4.1
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.0
 
 dev_dependencies:
-  auto_route_generator: ^5.0.2
+  auto_route_generator: ^7.3.0
   autoequal_gen: ^0.5.1
   bloc_test: ^9.0.2
   build_runner: ^2.3.3
