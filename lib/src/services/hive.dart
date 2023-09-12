@@ -12,7 +12,7 @@ void _registerAdapters() {
   Hive.registerAdapter<User>(UserAdapter());
 }
 
-abstract class IHiveRepository<E> {
+mixin IHiveRepository<E> {
   Box<E>? _box;
 
   String get boxKey;
