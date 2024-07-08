@@ -2,7 +2,7 @@
 
 Starting a new project? Do this steps:
 
-- [ ] Set new package name. Replace all `com.monterail.flutter.template` strings to your desired package name, eg. `com.company.app`.
+- [ ] Set new package name. Replace all `com.monterail.flutter.template` strings to your desired package name, eg. `com.company.app`. Consider using [rename](https://pub.dev/packages/rename) to automate the process.
 
 > Important: You have to also rename a folder structure in `android/app/src/main/kotlin` from `com/monterail/flutter/template` to match the package name, eg. `com/company/app` (yes, you'll have to delete one level of directories). Without this change, built Android apps will not launch.
 

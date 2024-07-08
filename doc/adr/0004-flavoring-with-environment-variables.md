@@ -23,4 +23,4 @@ We have chosen flavoring the app with environmental variables (`--dart-define=AP
 
 *Threats*:
 
-- Differences in whitespace handling between OSes and shells can cause weird build errors in remote build machines
+- Differences in whitespace handling between OSes and shells can cause cryptic build errors in remote build machines

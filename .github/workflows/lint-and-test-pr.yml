@@ -12,13 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-      - uses: actions/checkout@v2
-      
-      - uses: subosito/flutter-action@v1
+      - uses: actions/checkout@v4
+      - uses: monterail/flutter-action@v1
         with:
-          channel: 'stable' # 'dev', 'alpha', default to: 'stable'
-          # flutter-version: '1.12.x' # you can also specify exact version of flutter
-      
+          channel: 'stable'
       - run: flutter pub get
       - run: make generate-code
       - run: flutter format --set-exit-if-changed .

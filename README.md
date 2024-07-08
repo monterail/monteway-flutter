@@ -1,28 +1,19 @@
-# 🚀 Monterail Flutter app template 🚀
+# Monterail's Flutter app template
 
-Flutter app template.
+[![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](.)
+<img src="./doc/assets/monterail_logo.svg" alt="Monterail's logo" width="25%" height="100" align="right"/>
 
-Supports:
+An opinionated set of solutions to kick-off your new Flutter project with robust and stable foundation.
 
-- [x] Internationalization
-- [x] Splash screen
-- [x] Linting and formatting
-- [x] State management with bloc
-- [x] Flavors
-- [x] Routing
-- [x] Testing
-- [x] CI/CD with AppCenter
-- [x] Setup for VS Code
-- [x] Sentry integration
-- [x] ADR
-- [x] Changelog
-- [x] Caching, saving local data
+Features:
 
-## 👋 Getting Started
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+| User-facing | Maintenance |
+| - | - |
+| [Internationalization](#-localization) | [Linting and formatting](#-code-style) |
+| [Routing](#-routing) | [Quick splash screen setup](#native-splash-screen) |
+| [Caching, storing local data](#-caching-storing-local-data) | [CI/CD with CodeMagic](#-cd-with-appcenter) |
+| | [State management with BLoC](#-bloc-state-management) |
 
 ## 📦 Assets
 
@@ -397,7 +388,7 @@ After creating Sentry project just pass the DSN to `--dart-define=SENTRY_DSN=val
 
 Each app version should have brief notes for introduced changes in `CHANGELOG.md`.
 
-## 📒 Caching, saving local data
+## 📒 Caching, storing local data
 
 We use [Hive](https://docs.hivedb.dev/#/) database to store data locally. Hive is a lightweight, powerful database which runs fast on the device. 
 Unless you absolutely need to model your data with many relationships, choosing this pure-Dart package with no native dependencies can be the best option. 
