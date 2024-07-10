@@ -6,4 +6,4 @@
 
 An opinionated set of solutions to kick-off your new Flutter project with robust and stable foundation.
 
-Check the [docs](https://monteway-flutter-docs.web.app/start-checklist/).
+Check the [docs](https://monteway-flutter-docs.web.app).
