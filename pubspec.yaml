@@ -18,12 +18,12 @@ dependencies:
   flutter_bloc: ^9.0.0
   flutter_localizations:
     sdk: flutter
-  sembast: ^3.8.3
-  sentry_flutter: ^8.13.0
   freezed: ^2.5.7
   freezed_annotation: ^2.4.4
   json_annotation: ^4.9.0
   path_provider: ^2.1.5
+  sembast: ^3.8.3
+  sentry_flutter: ^8.13.0
 
 dev_dependencies:
   auto_route_generator: ^9.0.0
@@ -35,9 +35,7 @@ dev_dependencies:
     sdk: flutter
   integration_test:
     sdk: flutter
-  json_serializable: ^6.9.0 
-  
-
+  json_serializable: ^6.9.0
 
 flutter:
   uses-material-design: true
