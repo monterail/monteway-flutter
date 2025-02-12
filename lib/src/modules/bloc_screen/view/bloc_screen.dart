@@ -7,8 +7,7 @@ import 'package:template/src/modules/bloc_screen/bloc/counter_bloc.dart';
 class BlocScreen extends StatelessWidget {
   final String? title;
 
-  const BlocScreen({@PathParam('title') this.title, Key? key})
-      : super(key: key);
+  const BlocScreen({@PathParam('title') this.title, super.key});
 
   @override
   Widget build(BuildContext context) => Scaffold(

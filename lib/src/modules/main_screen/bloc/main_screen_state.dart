@@ -1,11 +1,9 @@
 part of 'main_screen_bloc.dart';
 
-@autoequalMixin
-class MainScreenState extends Equatable with _$MainScreenStateAutoequalMixin {
-  final User? user;
-  const MainScreenState({
-    this.user,
-  });
+@freezed
+class MainScreenState with _$MainScreenState {
+  const factory MainScreenState.initial() = InitialState;
+  const factory MainScreenState.loading() = LoadingState;
+  const factory MainScreenState.loaded(User user) = LoadedState;
+  const factory MainScreenState.error(String message) = ErrorState;
 }
-
-class InitState extends MainScreenState {}

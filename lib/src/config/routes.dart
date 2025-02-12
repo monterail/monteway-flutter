@@ -7,15 +7,16 @@ import 'package:template/src/modules/main_screen/view/main_screen.dart';
 part 'routes.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Screen,Route')
-class AppRouter extends _$AppRouter {
+class AppRouter extends RootStackRouter {
   @override
-  final List<AutoRoute> routes = [
-    AutoRoute(
-      page: MainRoute.page,
-      path: '/',
-      initial: true,
-    ),
-    AutoRoute(page: BlocRoute.page, path: '/bloc/:title'),
-    AutoRoute(page: CubitRoute.page, path: '/cubit/:title')
-  ];
+  List<AutoRoute> get routes => [
+        // Nowa składnia dla routingu
+        AutoRoute(
+          page: MainRoute.page,
+          path: '/',
+          initial: true,
+        ),
+        AutoRoute(page: BlocRoute.page, path: '/bloc/:title'),
+        AutoRoute(page: CubitRoute.page, path: '/cubit/:title'),
+      ];
 }

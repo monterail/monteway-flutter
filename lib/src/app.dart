@@ -4,20 +4,20 @@ import 'package:template/src/config/routes.dart';
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
+  MyApp({super.key});
 
   final _router = AppRouter();
 
   @override
   Widget build(BuildContext context) => MaterialApp.router(
-        routerDelegate: _router.delegate(
-          // Providing a navRestorationScopeId allows the Navigator built by the
-          // router to restore the navigation stack when a user leaves and
-          // returns to the app after it has been killed while running in the
-          // background.
-          navRestorationScopeId: 'app',
+        routerConfig: _router.config(
+          navRestorationScopeId:
+              // Providing a navRestorationScopeId allows the Navigator built by the
+              // router to restore the navigation stack when a user leaves and
+              // returns to the app after it has been killed while running in the
+              // background.
+              'app',
         ),
-        routeInformationParser: _router.defaultRouteParser(),
 
         // Provide the generated AppLocalizations to the MaterialApp. This
         // allows descendant Widgets to display the correct translations

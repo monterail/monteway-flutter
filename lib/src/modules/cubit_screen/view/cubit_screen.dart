@@ -7,8 +7,7 @@ import 'package:template/src/modules/cubit_screen/cubit/counter_cubit.dart';
 class CubitScreen extends StatelessWidget {
   final String? title;
 
-  const CubitScreen({@PathParam('title') this.title, Key? key})
-      : super(key: key);
+  const CubitScreen({@PathParam('title') this.title, super.key});
 
   @override
   Widget build(BuildContext context) => Scaffold(

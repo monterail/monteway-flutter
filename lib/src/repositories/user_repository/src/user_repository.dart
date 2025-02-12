@@ -1,23 +1,23 @@
-import 'package:template/src/repositories/user_repository/src/abstract_user_repository.dart';
-import 'package:template/src/services/hive.dart';
-import 'models/models.dart';
+import 'package:sembast/sembast.dart';
+import 'package:template/src/repositories/user_repository/user_repository.dart';
+import 'package:template/src/services/sembast.dart';
 
-class UserRepository with IHiveRepository<User> implements IUserRepository {
-  @override
-  String get boxKey => 'userInfoBoxKey';
+class UserRepository implements IUserRepository {
+  static const String _storeName = 'userStore';
+  final StoreRef<String, Map<String, dynamic>> _store =
+      stringMapStoreFactory.store(_storeName);
 
   @override
   Future<User?> getUser(String userKey) async {
-    return (await box).get(userKey);
+    final record = await _store.record(userKey).get(database);
+    return record != null ? User.fromJson(record) : null;
   }
 
   @override
-  Future<void> saveUser(String userKey, User user) async {
-    await (await box).put(userKey, user);
-  }
+  Future<void> saveUser(String userKey, User user) async =>
+      _store.record(userKey).put(database, user.toJson());
 
   @override
-  Future<void> deleteUser(String userKey, User user) async {
-    await (await box).delete(userKey);
-  }
+  Future<void> deleteUser(String userKey) async =>
+      _store.record(userKey).delete(database);
 }
