@@ -6,6 +6,9 @@ Future<void> configureSentry(SentryFlutterOptions options) async {
   // for performance monitoring.
   // Consider adjusting this value in production.
   options.tracesSampleRate = 1.0;
+  // Necessary for successful setup, available after creating a project in Sentry.
+  // https://docs.sentry.io/concepts/key-terms/dsn-explainer/
+  // options.dsn
 }
 
 // Make Sentry API testable.
