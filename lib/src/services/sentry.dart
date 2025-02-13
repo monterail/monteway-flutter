@@ -38,10 +38,9 @@ class SentryClient implements SentryIntegration {
 }
 
 class SentryBlocObserver extends BlocObserver {
-  final SentryIntegration _sentry;
-
   SentryBlocObserver({required SentryIntegration sentryIntegration})
       : _sentry = sentryIntegration;
+  final SentryIntegration _sentry;
 
   @override
   void onError(BlocBase bloc, Object error, StackTrace stackTrace) {

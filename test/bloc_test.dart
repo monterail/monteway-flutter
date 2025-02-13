@@ -14,7 +14,7 @@ void main() {
         CounterState(value: 1),
         CounterState(value: 2),
         CounterState(value: 3),
-        CounterState(value: 4)
+        CounterState(value: 4),
       ],
     );
 
@@ -22,13 +22,13 @@ void main() {
       'decrease actions',
       build: () => CounterBloc(),
       act: (bloc) => [
-        for (int i = 0; i < 4; i++) bloc.add(const CounterEvent.decreased())
+        for (int i = 0; i < 4; i++) bloc.add(const CounterEvent.decreased()),
       ],
       expect: () => const <CounterState>[
         CounterState(value: -1),
         CounterState(value: -2),
         CounterState(value: -3),
-        CounterState(value: -4)
+        CounterState(value: -4),
       ],
     );
   });

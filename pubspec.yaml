@@ -15,6 +15,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^9.0.0
+  flutter_lints: ^5.0.0
   flutter_localizations:
     sdk: flutter
   freezed: ^2.5.7
@@ -28,13 +29,13 @@ dev_dependencies:
   auto_route_generator: ^9.0.0
   bloc_test: ^10.0.0
   build_runner: ^2.4.15
-  flutter_lints: ^5.0.0
   flutter_native_splash: ^2.4.4
   flutter_test:
     sdk: flutter
   integration_test:
     sdk: flutter
   json_serializable: ^6.9.0
+  montelints: ^1.0.0+2
 
 flutter:
   uses-material-design: true

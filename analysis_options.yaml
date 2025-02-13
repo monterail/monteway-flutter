@@ -7,7 +7,7 @@
 
 # The following line activates a set of recommended lints for Flutter apps,
 # packages, and plugins designed to encourage good coding practices.
-include: package:flutter_lints/flutter.yaml
+include: package:montelints/lints.yaml
 
 analyzer:
   errors:
@@ -19,7 +19,7 @@ analyzer:
 
 linter:
   # The lint rules applied to this project can be customized in the
-  # section below to disable rules from the `package:flutter_lints/flutter.yaml`
+  # section below to disable rules from the `package:montelints/lints.yaml`
   # included above or to enable additional rules. A list of all available lints
   # and their documentation is published at
   # https://dart-lang.github.io/linter/lints/index.html.

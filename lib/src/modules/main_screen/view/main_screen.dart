@@ -45,7 +45,9 @@ class MainScreen extends StatelessWidget {
                           Text(
                             user.getFullName(),
                             style: const TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           _actionButtons(context),
                         ],
@@ -55,7 +57,9 @@ class MainScreen extends StatelessWidget {
                           Text(
                             message,
                             style: const TextStyle(
-                                color: Colors.red, fontWeight: FontWeight.bold),
+                              color: Colors.red,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           _actionButtons(context),
                         ],

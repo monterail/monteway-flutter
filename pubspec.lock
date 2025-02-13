@@ -297,7 +297,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_lints:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: flutter_lints
       sha256: "5398f14efa795ffb7a33e9b6a08798b26a180edac4ad7db3f231e40f82ce11e1"
@@ -545,6 +545,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
+  montelints:
+    dependency: "direct dev"
+    description:
+      name: montelints
+      sha256: cc8d502c9d0380a92cf9926e5dfd8edb41a4c8dd047e8186ccb3d5e8e4417efa
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0+2"
   nested:
     dependency: transitive
     description:

@@ -20,9 +20,11 @@ void main() {
         localizationsDelegates: const [
           AppLocalizations.delegate,
         ],
-        home: Builder(builder: (context) {
-          return Text(AppLocalizations.of(context)!.appTitle);
-        }),
+        home: Builder(
+          builder: (context) {
+            return Text(AppLocalizations.of(context)!.appTitle);
+          },
+        ),
       );
 
       // Build myWidget and trigger a frame.

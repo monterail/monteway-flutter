@@ -7,8 +7,6 @@ part 'main_screen_state.dart';
 part 'main_screen_bloc.freezed.dart';
 
 class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
-  final UserRepository userRepository;
-
   MainScreenBloc({required this.userRepository})
       : super(const MainScreenState.initial()) {
     on<InitEvent>(_init);
@@ -16,6 +14,7 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     on<RemoveUserEvent>(_removeUser);
     on<ReportSentryError>(_handleReportSentryError);
   }
+  final UserRepository userRepository;
 
   Future<void> _init(InitEvent event, Emitter<MainScreenState> emit) async {
     emit(const MainScreenState.loading());
@@ -32,7 +31,9 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
   }
 
   Future<void> _saveUser(
-      AddUserEvent event, Emitter<MainScreenState> emit) async {
+    AddUserEvent event,
+    Emitter<MainScreenState> emit,
+  ) async {
     emit(const MainScreenState.loading());
     try {
       final user = User(pk: 1, firstName: 'Jan', lastName: 'Nowak');
@@ -44,7 +45,9 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
   }
 
   Future<void> _removeUser(
-      RemoveUserEvent event, Emitter<MainScreenState> emit) async {
+    RemoveUserEvent event,
+    Emitter<MainScreenState> emit,
+  ) async {
     emit(const MainScreenState.loading());
     try {
       await userRepository.deleteUser('userKey');
@@ -55,7 +58,9 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
   }
 
   void _handleReportSentryError(
-      ReportSentryError event, Emitter<MainScreenState> emit) {
+    ReportSentryError event,
+    Emitter<MainScreenState> emit,
+  ) {
     throw Exception('test exception');
   }
 }

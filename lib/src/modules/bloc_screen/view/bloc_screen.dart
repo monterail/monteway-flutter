@@ -5,9 +5,8 @@ import 'package:template/src/modules/bloc_screen/bloc/counter_bloc.dart';
 
 @RoutePage()
 class BlocScreen extends StatelessWidget {
-  final String? title;
-
   const BlocScreen({@PathParam('title') this.title, super.key});
+  final String? title;
 
   @override
   Widget build(BuildContext context) => Scaffold(
