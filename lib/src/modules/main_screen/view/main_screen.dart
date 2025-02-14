@@ -2,9 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:template/src/config/routes.dart';
+import 'package:template/src/localization/app_localizations.dart';
 import 'package:template/src/modules/main_screen/bloc/main_screen_bloc.dart';
 import 'package:template/src/environment/variables.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:template/src/repositories/user_repository/user_repository.dart';
 
 @RoutePage()
