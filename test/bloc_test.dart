@@ -7,29 +7,35 @@ void main() {
     blocTest<CounterBloc, CounterState>(
       'increase actions',
       build: () => CounterBloc(),
-      act: (bloc) => [
-        for (int i = 0; i < 4; i++) bloc.add(const CounterEvent.increased()),
-      ],
-      expect: () => const <CounterState>[
-        CounterState(value: 1),
-        CounterState(value: 2),
-        CounterState(value: 3),
-        CounterState(value: 4),
-      ],
+      act:
+          (bloc) => [
+            for (int i = 0; i < 4; i++)
+              bloc.add(const CounterEvent.increased()),
+          ],
+      expect:
+          () => const <CounterState>[
+            CounterState(value: 1),
+            CounterState(value: 2),
+            CounterState(value: 3),
+            CounterState(value: 4),
+          ],
     );
 
     blocTest<CounterBloc, CounterState>(
       'decrease actions',
       build: () => CounterBloc(),
-      act: (bloc) => [
-        for (int i = 0; i < 4; i++) bloc.add(const CounterEvent.decreased()),
-      ],
-      expect: () => const <CounterState>[
-        CounterState(value: -1),
-        CounterState(value: -2),
-        CounterState(value: -3),
-        CounterState(value: -4),
-      ],
+      act:
+          (bloc) => [
+            for (int i = 0; i < 4; i++)
+              bloc.add(const CounterEvent.decreased()),
+          ],
+      expect:
+          () => const <CounterState>[
+            CounterState(value: -1),
+            CounterState(value: -2),
+            CounterState(value: -3),
+            CounterState(value: -4),
+          ],
     );
   });
 }

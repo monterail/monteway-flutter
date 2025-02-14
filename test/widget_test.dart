@@ -17,9 +17,7 @@ void main() {
     testWidgets('should display a localized text', (WidgetTester tester) async {
       // Define a Widget
       final myWidget = MaterialApp(
-        localizationsDelegates: const [
-          AppLocalizations.delegate,
-        ],
+        localizationsDelegates: const [AppLocalizations.delegate],
         home: Builder(
           builder: (context) {
             return Text(AppLocalizations.of(context)!.appTitle);

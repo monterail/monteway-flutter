@@ -13,34 +13,33 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => BlocProvider(
-        create: (context) =>
+    create:
+        (context) =>
             MainScreenBloc(userRepository: UserRepository())..add(InitEvent()),
-        child: Scaffold(
-          body: Center(
-            child: BlocBuilder<MainScreenBloc, MainScreenState>(
-              builder: (context, state) {
-                return Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      AppLocalizations.of(context)!.appTitle,
-                      style: Theme.of(context).textTheme.headlineSmall,
-                    ),
-                    const Text(
-                      '${EnvironmentVariables.appName} ${EnvironmentVariables.appSuffix}',
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                    ),
-                    const SizedBox(height: 16),
-                    state.when(
-                      initial: () => Column(
-                        children: [
-                          const Text('-'),
-                          _actionButtons(context),
-                        ],
+    child: Scaffold(
+      body: Center(
+        child: BlocBuilder<MainScreenBloc, MainScreenState>(
+          builder: (context, state) {
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  AppLocalizations.of(context)!.appTitle,
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+                const Text(
+                  '${EnvironmentVariables.appName} ${EnvironmentVariables.appSuffix}',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                ),
+                const SizedBox(height: 16),
+                state.when(
+                  initial:
+                      () => Column(
+                        children: [const Text('-'), _actionButtons(context)],
                       ),
-                      loading: () => const CircularProgressIndicator(),
-                      loaded: (user) => Column(
+                  loading: () => const CircularProgressIndicator(),
+                  loaded:
+                      (user) => Column(
                         children: [
                           Text(
                             user.getFullName(),
@@ -52,7 +51,8 @@ class MainScreen extends StatelessWidget {
                           _actionButtons(context),
                         ],
                       ),
-                      error: (message) => Column(
+                  error:
+                      (message) => Column(
                         children: [
                           Text(
                             message,
@@ -64,52 +64,52 @@ class MainScreen extends StatelessWidget {
                           _actionButtons(context),
                         ],
                       ),
+                ),
+                const SizedBox(height: 20),
+                TextButton.icon(
+                  onPressed:
+                      () => context.read<MainScreenBloc>().add(
+                        ReportSentryError(),
+                      ),
+                  icon: const Icon(Icons.error, color: Colors.red),
+                  label: const Text('Report an error to Sentry'),
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    TextButton(
+                      onPressed:
+                          () => context.router.push(CubitRoute(title: 'Cubit')),
+                      child: const Text('To Cubit screen'),
                     ),
-                    const SizedBox(height: 20),
-                    TextButton.icon(
-                      onPressed: () => context
-                          .read<MainScreenBloc>()
-                          .add(ReportSentryError()),
-                      icon: const Icon(Icons.error, color: Colors.red),
-                      label: const Text('Report an error to Sentry'),
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        TextButton(
-                          onPressed: () =>
-                              context.router.push(CubitRoute(title: 'Cubit')),
-                          child: const Text('To Cubit screen'),
-                        ),
-                        TextButton(
-                          onPressed: () =>
-                              context.router.push(BlocRoute(title: 'BLoC')),
-                          child: const Text('To BLoC screen'),
-                        ),
-                      ],
+                    TextButton(
+                      onPressed:
+                          () => context.router.push(BlocRoute(title: 'BLoC')),
+                      child: const Text('To BLoC screen'),
                     ),
                   ],
-                );
-              },
-            ),
-          ),
+                ),
+              ],
+            );
+          },
         ),
-      );
+      ),
+    ),
+  );
 
   Widget _actionButtons(BuildContext context) => Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ElevatedButton(
-            onPressed: () =>
-                context.read<MainScreenBloc>().add(RemoveUserEvent()),
-            child: const Text('Remove'),
-          ),
-          const SizedBox(width: 16),
-          ElevatedButton(
-            onPressed: () => context.read<MainScreenBloc>().add(AddUserEvent()),
-            child: const Text('Add'),
-          ),
-        ],
-      );
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      ElevatedButton(
+        onPressed: () => context.read<MainScreenBloc>().add(RemoveUserEvent()),
+        child: const Text('Remove'),
+      ),
+      const SizedBox(width: 16),
+      ElevatedButton(
+        onPressed: () => context.read<MainScreenBloc>().add(AddUserEvent()),
+        child: const Text('Add'),
+      ),
+    ],
+  );
 }

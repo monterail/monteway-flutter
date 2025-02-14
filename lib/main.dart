@@ -18,9 +18,7 @@ Future<void> bootWithSentry() async {
   return SentryFlutter.init(
     configureSentry,
     appRunner: () {
-      Bloc.observer = SentryBlocObserver(
-        sentryIntegration: SentryClient(),
-      );
+      Bloc.observer = SentryBlocObserver(sentryIntegration: SentryClient());
       runApp(MyApp());
     },
   );

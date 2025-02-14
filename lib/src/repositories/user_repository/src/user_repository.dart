@@ -4,8 +4,8 @@ import 'package:template/src/services/sembast.dart';
 
 class UserRepository implements IUserRepository {
   static const String _storeName = 'userStore';
-  final StoreRef<String, Map<String, dynamic>> _store =
-      stringMapStoreFactory.store(_storeName);
+  final StoreRef<String, Map<String, dynamic>> _store = stringMapStoreFactory
+      .store(_storeName);
 
   @override
   Future<User?> getUser(String userKey) async {

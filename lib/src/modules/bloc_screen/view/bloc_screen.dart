@@ -10,37 +10,37 @@ class BlocScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: Text(title ?? ''),
-        ),
-        body: BlocProvider(
-          create: (context) => CounterBloc(),
-          child: BlocBuilder<CounterBloc, CounterState>(
-            builder: (context, state) {
-              return Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    FloatingActionButton(
-                      heroTag: 'minusBtn',
-                      onPressed: () => context
-                          .read<CounterBloc>()
-                          .add(const CounterEvent.decreased()),
-                      child: const Icon(Icons.remove),
-                    ),
-                    Text('${state.value}'),
-                    FloatingActionButton(
-                      heroTag: 'plusBtn',
-                      onPressed: () => context
-                          .read<CounterBloc>()
-                          .add(const CounterEvent.increased()),
-                      child: const Icon(Icons.add),
-                    ),
-                  ],
+    appBar: AppBar(title: Text(title ?? '')),
+    body: BlocProvider(
+      create: (context) => CounterBloc(),
+      child: BlocBuilder<CounterBloc, CounterState>(
+        builder: (context, state) {
+          return Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                FloatingActionButton(
+                  heroTag: 'minusBtn',
+                  onPressed:
+                      () => context.read<CounterBloc>().add(
+                        const CounterEvent.decreased(),
+                      ),
+                  child: const Icon(Icons.remove),
                 ),
-              );
-            },
-          ),
-        ),
-      );
+                Text('${state.value}'),
+                FloatingActionButton(
+                  heroTag: 'plusBtn',
+                  onPressed:
+                      () => context.read<CounterBloc>().add(
+                        const CounterEvent.increased(),
+                      ),
+                  child: const Icon(Icons.add),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    ),
+  );
 }

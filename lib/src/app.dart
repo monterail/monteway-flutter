@@ -10,29 +10,29 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialApp.router(
-        routerConfig: _router.config(
-          navRestorationScopeId:
-              // Providing a navRestorationScopeId allows the Navigator built by the
-              // router to restore the navigation stack when a user leaves and
-              // returns to the app after it has been killed while running in the
-              // background.
-              'app',
-        ),
+    routerConfig: _router.config(
+      navRestorationScopeId:
+          // Providing a navRestorationScopeId allows the Navigator built by the
+          // router to restore the navigation stack when a user leaves and
+          // returns to the app after it has been killed while running in the
+          // background.
+          'app',
+    ),
 
-        // Provide the generated AppLocalizations to the MaterialApp. This
-        // allows descendant Widgets to display the correct translations
-        // depending on the user's locale.
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
+    // Provide the generated AppLocalizations to the MaterialApp. This
+    // allows descendant Widgets to display the correct translations
+    // depending on the user's locale.
+    localizationsDelegates: AppLocalizations.localizationsDelegates,
+    supportedLocales: AppLocalizations.supportedLocales,
 
-        // Use AppLocalizations to configure the correct application title
-        // depending on the user's locale.
-        //
-        // The appTitle is defined in .arb files found in the localization
-        // directory.
-        onGenerateTitle: (BuildContext context) =>
-            AppLocalizations.of(context)!.appTitle,
+    // Use AppLocalizations to configure the correct application title
+    // depending on the user's locale.
+    //
+    // The appTitle is defined in .arb files found in the localization
+    // directory.
+    onGenerateTitle:
+        (BuildContext context) => AppLocalizations.of(context)!.appTitle,
 
-        theme: ThemeData(),
-      );
+    theme: ThemeData(),
+  );
 }

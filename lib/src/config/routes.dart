@@ -10,13 +10,9 @@ part 'routes.gr.dart';
 class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
-        // Nowa składnia dla routingu
-        AutoRoute(
-          page: MainRoute.page,
-          path: '/',
-          initial: true,
-        ),
-        AutoRoute(page: BlocRoute.page, path: '/bloc/:title'),
-        AutoRoute(page: CubitRoute.page, path: '/cubit/:title'),
-      ];
+    // Nowa składnia dla routingu
+    AutoRoute(page: MainRoute.page, path: '/', initial: true),
+    AutoRoute(page: BlocRoute.page, path: '/bloc/:title'),
+    AutoRoute(page: CubitRoute.page, path: '/cubit/:title'),
+  ];
 }

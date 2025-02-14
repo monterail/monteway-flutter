@@ -28,18 +28,17 @@ class SentryClient implements SentryIntegration {
     stackTrace,
     hint,
     ScopeCallback? withScope,
-  }) =>
-      Sentry.captureException(
-        throwable,
-        stackTrace: stackTrace,
-        hint: hint,
-        withScope: withScope,
-      );
+  }) => Sentry.captureException(
+    throwable,
+    stackTrace: stackTrace,
+    hint: hint,
+    withScope: withScope,
+  );
 }
 
 class SentryBlocObserver extends BlocObserver {
   SentryBlocObserver({required SentryIntegration sentryIntegration})
-      : _sentry = sentryIntegration;
+    : _sentry = sentryIntegration;
   final SentryIntegration _sentry;
 
   @override

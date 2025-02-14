@@ -8,7 +8,7 @@ part 'main_screen_bloc.freezed.dart';
 
 class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
   MainScreenBloc({required this.userRepository})
-      : super(const MainScreenState.initial()) {
+    : super(const MainScreenState.initial()) {
     on<InitEvent>(_init);
     on<AddUserEvent>(_saveUser);
     on<RemoveUserEvent>(_removeUser);
