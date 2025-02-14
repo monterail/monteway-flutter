@@ -1,0 +1,35 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    # comments hygiene
+    - comment_references
+    - flutter_style_todos
+
+    # testing
+    - use_test_throws_matchers
+
+    # pubspec hygiene
+    - sort_pub_dependencies
+
+    # code hygiene
+    - avoid_void_async
+    - sort_constructors_first
+    - unawaited_futures
+    - unnecessary_breaks
+    - unnecessary_parenthesis
+    - unnecessary_raw_strings
+    - use_colored_box
+    - use_decorated_box
+    - use_enums
+    - use_named_constants
+
+    # solve code review quarrels 
+    - avoid_escaping_inner_quotes
+    - avoid_final_parameters
+    - cascade_invocations
+    - prefer_final_locals
+    - prefer_final_in_for_each
+    - prefer_null_aware_method_calls
+    - prefer_single_quotes
+    - require_trailing_commas
