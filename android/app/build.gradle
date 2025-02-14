@@ -1,14 +1,16 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
     localPropertiesFile.withReader('UTF-8') { reader ->
         localProperties.load(reader)
     }
-}
-
-def flutterRoot = localProperties.getProperty('flutter.sdk')
-if (flutterRoot == null) {
-    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
 }
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
@@ -20,10 +22,6 @@ def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
-
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 def dartEnvironmentVariables = [
     APP_IDENTIFIER: 'com.monterail.flutter.template',
@@ -43,7 +41,9 @@ if (project.hasProperty('dart-defines')) {
 def appVersionCode = System.getenv('APPCENTER_BUILD_ID') ?: flutterVersionCode;
 
 android {
-    compileSdkVersion 31
+    namespace dartEnvironmentVariables.APP_IDENTIFIER
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -51,7 +51,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_1_8
     }
 
     sourceSets {
@@ -61,8 +61,8 @@ android {
     defaultConfig {
         applicationId dartEnvironmentVariables.APP_IDENTIFIER
         applicationIdSuffix dartEnvironmentVariables.APP_SUFFIX
-        minSdkVersion 16
-        targetSdkVersion 31
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
         versionCode appVersionCode.toInteger()
         versionName flutterVersionName
         resValue "string", "app_name", dartEnvironmentVariables.APP_NAME
@@ -92,8 +92,4 @@ android {
 
 flutter {
     source '../..'
-}
-
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

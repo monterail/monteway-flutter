@@ -4,4 +4,8 @@ class EnvironmentVariables {
     defaultValue: 'Unflavored app name',
   );
   static const String appSuffix = String.fromEnvironment('APP_SUFFIX');
+  static const String sentryDsn = String.fromEnvironment(
+    'SENTRY_DSN',
+    defaultValue: 'Sentry DSN',
+  );
 }

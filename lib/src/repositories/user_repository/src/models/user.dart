@@ -1,30 +1,21 @@
-import 'package:autoequal/autoequal.dart';
-import 'package:equatable/equatable.dart';
-import 'package:hive/hive.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'user.freezed.dart';
 part 'user.g.dart';
 
-@autoequalMixin
-@HiveType(typeId: 1)
-class User extends Equatable with _$UserAutoequalMixin {
-  @HiveField(0)
-  final int pk;
-  @HiveField(1)
-  final String? email;
-  @HiveField(2)
-  final String? phone;
-  @HiveField(3)
-  final String? firstName;
-  @HiveField(4)
-  final String? lastName;
+@freezed
+class User with _$User {
+  const factory User({
+    required int pk,
+    String? email,
+    String? phone,
+    String? firstName,
+    String? lastName,
+  }) = _User;
 
-  User({
-    required this.pk,
-    this.email,
-    this.phone,
-    this.firstName,
-    this.lastName,
-  });
+  factory User.fromJson(Map<String, Object?> json) => _$UserFromJson(json);
+}
 
-  String getFullName() => '$firstName $lastName';
+extension UserX on User {
+  String getFullName() => '${firstName ?? ''} ${lastName ?? ''}'.trim();
 }

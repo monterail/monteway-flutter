@@ -11,17 +11,11 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
     on<_Increased>(_onIncreased);
   }
 
-  void _onIncreased(
-    _Increased event,
-    Emitter<CounterState> emit,
-  ) {
+  void _onIncreased(_Increased event, Emitter<CounterState> emit) {
     emit(state.copyWith(value: state.value + 1));
   }
 
-  void _onDecreased(
-    _Decreased event,
-    Emitter<CounterState> emit,
-  ) {
+  void _onDecreased(_Decreased event, Emitter<CounterState> emit) {
     emit(state.copyWith(value: state.value - 1));
   }
 }
