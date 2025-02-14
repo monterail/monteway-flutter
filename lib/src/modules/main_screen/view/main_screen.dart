@@ -90,6 +90,10 @@ class MainScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+                TextButton(
+                  child: Text('Licences'),
+                  onPressed: () => showLicensePage(context: context),
+                ),
               ],
             );
           },
