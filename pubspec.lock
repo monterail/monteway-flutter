@@ -721,6 +721,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.0"
+  result_type:
+    dependency: "direct main"
+    description:
+      name: result_type
+      sha256: "3bab22e6c4069463b1919ed972c435cfc06277d81d56af6780a67ddfd8bcb575"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   sembast:
     dependency: "direct main"
     description:

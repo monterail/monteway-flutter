@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:result_type/result_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:template/src/repositories/user_repository/user_repository.dart';
 
@@ -14,20 +15,21 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     on<RemoveUserEvent>(_removeUser);
     on<ReportSentryError>(_handleReportSentryError);
   }
+
   final UserRepository userRepository;
 
   Future<void> _init(InitEvent event, Emitter<MainScreenState> emit) async {
     emit(const MainScreenState.loading());
-    try {
-      final user = await userRepository.getUser('userKey');
-      if (user != null) {
-        emit(MainScreenState.loaded(user));
-      } else {
-        emit(const MainScreenState.initial());
-      }
-    } catch (e) {
-      emit(const MainScreenState.error('Błąd pobierania użytkownika'));
-    }
+    final result = await userRepository.getUser('userKey');
+    final _ = switch (result) {
+      Success(value: final user) =>
+        user != null
+            ? emit(MainScreenState.loaded(user))
+            : emit(const MainScreenState.initial()),
+      Failure(value: final error) => emit(
+        MainScreenState.error(error.errorType),
+      ),
+    };
   }
 
   Future<void> _saveUser(
@@ -35,13 +37,14 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     Emitter<MainScreenState> emit,
   ) async {
     emit(const MainScreenState.loading());
-    try {
-      final user = User(pk: 1, firstName: 'Jan', lastName: 'Nowak');
-      await userRepository.saveUser('userKey', user);
-      emit(MainScreenState.loaded(user));
-    } catch (e) {
-      emit(const MainScreenState.error('Błąd zapisywania użytkownika'));
-    }
+    final user = User(pk: 1, firstName: 'Jan', lastName: 'Nowak');
+    final result = await userRepository.saveUser('userKey', user);
+    final _ = switch (result) {
+      Success(value: final _) => emit(MainScreenState.loaded(user)),
+      Failure(value: final error) => emit(
+        MainScreenState.error(error.errorType),
+      ),
+    };
   }
 
   Future<void> _removeUser(
@@ -49,12 +52,13 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     Emitter<MainScreenState> emit,
   ) async {
     emit(const MainScreenState.loading());
-    try {
-      await userRepository.deleteUser('userKey');
-      emit(const MainScreenState.initial());
-    } catch (e) {
-      emit(const MainScreenState.error('Błąd usuwania użytkownika'));
-    }
+    final result = await userRepository.deleteUser('userKey');
+    final _ = switch (result) {
+      Success(value: final _) => emit(const MainScreenState.initial()),
+      Failure(value: final error) => emit(
+        MainScreenState.error(error.errorType),
+      ),
+    };
   }
 
   void _handleReportSentryError(

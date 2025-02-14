@@ -55,7 +55,7 @@ class MainScreen extends StatelessWidget {
                       (message) => Column(
                         children: [
                           Text(
-                            message,
+                            message.translatedError,
                             style: const TextStyle(
                               color: Colors.red,
                               fontWeight: FontWeight.bold,
