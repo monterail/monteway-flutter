@@ -43,13 +43,13 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  flutter_native_splash: f71420956eb811e6d310720fee915f1d42852e7a
-  integration_test: 252f60fa39af5e17c3aa9899d35d908a0721b573
-  package_info_plus: c0502532a26c7662a62a356cebe2692ec5fe4ec4
-  path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
+  flutter_native_splash: 6cad9122ea0fad137d23137dd14b937f3e90b145
+  integration_test: 4a889634ef21a45d28d50d622cf412dc6d9f586e
+  package_info_plus: af8e2ca6888548050f16fa2f1938db7b5a5df499
+  path_provider_foundation: 080d55be775b7414fd5a5ef3ac137b97b097e564
   Sentry: 0f9bc9adfc0b960e7f3bb5ec67e9a3d8193f3bdb
-  sentry_flutter: c4c3e7feec83e061daf829f6f9359efefab00d87
+  sentry_flutter: be956a32343176b344ef4b23ecdab47ab6f0ffa6
 
 PODFILE CHECKSUM: c4c93c5f6502fe2754f48404d3594bf779584011
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

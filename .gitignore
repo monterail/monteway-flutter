@@ -32,6 +32,9 @@
 .pub/
 /build/
 
+# Ignore Android NDK build files
+android/app/.cxx/
+
 # Web related
 lib/generated_plugin_registrant.dart
 
