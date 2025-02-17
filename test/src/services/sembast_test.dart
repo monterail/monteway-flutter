@@ -19,7 +19,7 @@ void main() {
 
   group('Sembast Database with User model', () {
     const userKey = 'user1';
-    final user = User(
+    final user = const User(
       pk: 1,
       email: 'test@example.com',
       phone: '123456789',

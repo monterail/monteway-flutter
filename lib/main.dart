@@ -8,12 +8,8 @@ import 'package:sentry_flutter/sentry_flutter.dart' hide SentryClient;
 import 'src/app.dart';
 
 void main() async => runZonedGuarded(
-  () async {
-    await bootWithSentry();
-  },
-  (error, stackTrace) {
-    Sentry.captureException(error, stackTrace: stackTrace);
-  },
+  () async => bootWithSentry(),
+  (error, stackTrace) => Sentry.captureException(error, stackTrace: stackTrace),
 );
 
 Future<void> boot() async {

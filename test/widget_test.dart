@@ -19,9 +19,7 @@ void main() {
       final myWidget = MaterialApp(
         localizationsDelegates: const [AppLocalizations.delegate],
         home: Builder(
-          builder: (context) {
-            return Text(AppLocalizations.of(context)!.appTitle);
-          },
+          builder: (context) => Text(AppLocalizations.of(context)!.appTitle),
         ),
       );
 

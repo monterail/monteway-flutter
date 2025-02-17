@@ -16,6 +16,7 @@ linter:
     - avoid_void_async
     - sort_constructors_first
     - unawaited_futures
+    - unnecessary_await_in_return
     - unnecessary_breaks
     - unnecessary_parenthesis
     - unnecessary_raw_strings
@@ -25,11 +26,16 @@ linter:
     - use_named_constants
 
     # solve code review quarrels 
+    - always_declare_return_types
     - avoid_escaping_inner_quotes
+    - avoid_unnecessary_containers
     - avoid_final_parameters
     - cascade_invocations
+    - prefer_const_constructors
+    - prefer_final_fields
     - prefer_final_locals
     - prefer_final_in_for_each
     - prefer_null_aware_method_calls
+    - prefer_expression_function_bodies
     - prefer_single_quotes
     - require_trailing_commas
