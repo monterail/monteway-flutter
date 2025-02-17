@@ -37,7 +37,7 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
     Emitter<MainScreenState> emit,
   ) async {
     emit(const MainScreenState.loading());
-    final user = User(pk: 1, firstName: 'Jan', lastName: 'Nowak');
+    final user = const User(pk: 1, firstName: 'Jan', lastName: 'Nowak');
     final result = await userRepository.saveUser('userKey', user);
     final _ = switch (result) {
       Success(value: final _) => emit(MainScreenState.loaded(user)),

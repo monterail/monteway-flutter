@@ -14,7 +14,7 @@ Future<void> setupSembast() async {
     _database = await databaseFactoryWeb.openDatabase(_databaseName);
   } else {
     final appDir = await getApplicationDocumentsDirectory();
-    final dbPath = '${appDir.path}/databaseName';
+    final dbPath = '${appDir.path}/$_databaseName';
     _database = await databaseFactoryIo.openDatabase(dbPath);
   }
 }

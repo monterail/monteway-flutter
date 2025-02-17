@@ -14,26 +14,25 @@ class CubitScreen extends StatelessWidget {
     body: BlocProvider(
       create: (context) => CounterCubit(),
       child: BlocBuilder<CounterCubit, CounterState>(
-        builder: (context, state) {
-          return Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                FloatingActionButton(
-                  heroTag: 'minusBtn',
-                  onPressed: () => context.read<CounterCubit>().decrement(),
-                  child: const Icon(Icons.remove),
-                ),
-                Text('${state.value}'),
-                FloatingActionButton(
-                  heroTag: 'plusBtn',
-                  onPressed: () => context.read<CounterCubit>().increment(),
-                  child: const Icon(Icons.add),
-                ),
-              ],
+        builder:
+            (context, state) => Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  FloatingActionButton(
+                    heroTag: 'minusBtn',
+                    onPressed: () => context.read<CounterCubit>().decrement(),
+                    child: const Icon(Icons.remove),
+                  ),
+                  Text('${state.value}'),
+                  FloatingActionButton(
+                    heroTag: 'plusBtn',
+                    onPressed: () => context.read<CounterCubit>().increment(),
+                    child: const Icon(Icons.add),
+                  ),
+                ],
+              ),
             ),
-          );
-        },
       ),
     ),
   );
